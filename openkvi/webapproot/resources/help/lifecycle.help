@@ -1,0 +1,9 @@
+<dl><dt><code>destroy:</code></dt><dd>The domain will be terminated completely and all ressources released.</dd>
+<dl><dt><code>restart:</code></dt><dd>The domain will be terminated and then restarted with the same configuration.</dd>
+<dl><dt><code>preserve:</code></dt><dd>The domain will be terminated and its resources preserved for analysis.</dd>
+<dl><dt><code>rename-restart:</code></dt><dd>The domain will be terminated and then restarted with a new name.</dd>
+<p><i>
+The "on Crash" event also support these additional actions:
+<dl><dt><code>coredump-destroy:</code></dt><dd>The crashed domain's core will be dumped and then the domain will be terminated completely and all resources released.</dd>
+<dl><dt><code>coredump-restart:</code></dt><dd>The crased domain's core will be dumped and then the domain will be restarted with the same configuration.</dd>
+</i></p>

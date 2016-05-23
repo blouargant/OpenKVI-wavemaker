@@ -1,0 +1,15 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <meta attribute="@design.default-queries"/>
+    <query name="listAuthDB">
+        from Authentication _a
+    </query>
+    <query name="deleteVmsFromNode">
+        <query-param name="selectedServer" type="java.lang.String"/>
+        DELETE FROM Vms WHERE server = :selectedServer
+    </query>
+    <query name="deleteVmFromDb">
+        <query-param name="selectedVM" type="java.lang.String"/>
+        DELETE FROM Vms WHERE name = :selectedVM
+    </query>
+</hibernate-mapping>

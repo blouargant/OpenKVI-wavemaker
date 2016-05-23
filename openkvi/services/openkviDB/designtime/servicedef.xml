@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" springFile="openkviDB.spring.xml" type="DataService" CRUDService="true" class="com.openkvidb.OpenkviDB" id="openkviDB">
+    <operation name="listAuthDB" operationType="hqlquery">
+        <return isList="true" typeRef="com.openkvidb.data.Authentication"/>
+    </operation>
+    <operation name="getVmsById" operationType="hqlquery">
+        <parameter isList="false" typeRef="java.lang.Integer" name="id"/>
+        <return isList="false" typeRef="com.openkvidb.data.Vms"/>
+    </operation>
+    <operation name="deleteVmsFromNode" operationType="hqlquery">
+        <parameter isList="false" typeRef="java.lang.String" name="selectedServer"/>
+        <return isList="false" typeRef="java.lang.Integer"/>
+    </operation>
+    <operation name="deleteVmFromDb" operationType="hqlquery">
+        <parameter isList="false" typeRef="java.lang.String" name="selectedVM"/>
+        <return isList="false" typeRef="java.lang.Integer"/>
+    </operation>
+    <dataobjects>
+        <dataobject supportsQuickData="true" javaType="com.openkvidb.data.Authentication">
+            <element allowNull="false" isList="false" typeRef="java.lang.Integer" name="id">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="mode"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldaphost"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldapport"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldapadminlogin"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldapadminpassword"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldapbasedn"/>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="ldapcreationmode"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldapdefaultrole"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldapidentifierfield"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldapfirstnamefield"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldaplastnamefield"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="ldapmailfield"/>
+        </dataobject>
+        <dataobject supportsQuickData="true" javaType="com.openkvidb.data.Groups">
+            <element allowNull="false" isList="false" typeRef="java.lang.Integer" name="id">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="name"/>
+        </dataobject>
+        <dataobject supportsQuickData="true" javaType="com.openkvidb.data.Nodes">
+            <element allowNull="false" isList="false" typeRef="java.lang.Integer" name="id">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="name"/>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="ip"/>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="hypervisor"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="description"/>
+        </dataobject>
+        <dataobject supportsQuickData="true" javaType="com.openkvidb.data.Users">
+            <element allowNull="false" isList="false" typeRef="java.lang.Integer" name="id">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="login"/>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="password"/>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="role"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="lastname"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="firstname"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="mail"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="groupid"/>
+        </dataobject>
+        <dataobject supportsQuickData="true" javaType="com.openkvidb.data.Vms">
+            <element allowNull="false" isList="false" typeRef="java.lang.Integer" name="id">
+                <require>delete</require>
+                <require>read</require>
+                <require>update</require>
+                <noChange>delete</noChange>
+                <noChange>read</noChange>
+                <noChange>update</noChange>
+                <exclude>insert</exclude>
+            </element>
+            <element allowNull="true" isList="false" typeRef="java.lang.Integer" name="memory"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.Integer" name="nbcpu"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="freqcpu"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="arch"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="network"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="cdrom"/>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="name"/>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="server"/>
+            <element allowNull="true" isList="false" typeRef="java.lang.String" name="disks"/>
+            <element allowNull="false" isList="false" typeRef="java.lang.String" name="displayedname"/>
+        </dataobject>
+    </dataobjects>
+</service>

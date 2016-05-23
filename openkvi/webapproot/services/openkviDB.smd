@@ -1,0 +1,34 @@
+{
+	"methods": [{
+		"name": "deleteVmFromDb",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "selectedVM",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
+		"name": "deleteVmsFromNode",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "selectedServer",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.Integer"
+	}, {
+		"name": "getVmsById",
+		"operationType": "hqlquery",
+		"parameters": [{
+			"name": "id",
+			"type": "java.lang.Integer"
+		}],
+		"returnType": "com.openkvidb.data.Vms"
+	}, {
+		"name": "listAuthDB",
+		"operationType": "hqlquery",
+		"parameters": null,
+		"returnType": "[com.openkvidb.data.Authentication]"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "openkviDB.json"
+}

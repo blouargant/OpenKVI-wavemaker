@@ -1,0 +1,39 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.openkvidb.data.Vms" table="vms" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="memory" type="integer">
+            <column name="memory"/>
+        </property>
+        <property name="nbcpu" type="integer">
+            <column name="nbcpu"/>
+        </property>
+        <property name="freqcpu" type="string">
+            <column name="freqcpu" length="50"/>
+        </property>
+        <property name="arch" type="string">
+            <column name="arch" length="50"/>
+        </property>
+        <property name="network" type="string">
+            <column name="network" length="50"/>
+        </property>
+        <property name="cdrom" type="string">
+            <column name="cdrom" length="50"/>
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="50" not-null="true"/>
+        </property>
+        <property name="server" type="string">
+            <column name="server" length="50" not-null="true"/>
+        </property>
+        <property name="disks" type="string">
+            <column name="disks" length="50"/>
+        </property>
+        <property name="displayedname" type="string">
+            <column name="displayedname" length="50" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

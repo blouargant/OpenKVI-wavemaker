@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" springFile="authenticationModeTools.spring.xml" type="JavaService" CRUDService="false" class="authenticationModeTools" id="authenticationModeTools">
+    <operation name="getAuthenticationData">
+        <return isList="false" typeRef="com.openkvidb.data.Authentication"/>
+    </operation>
+    <operation name="AutoSubscribeLdapUser">
+        <parameter isList="false" typeRef="java.lang.String" name="user"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getSubscriptionMode">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getAuthenticationMode">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getLdapUserInfo">
+        <parameter isList="false" typeRef="java.lang.String" name="login"/>
+        <parameter isList="false" typeRef="java.lang.String" name="password"/>
+        <parameter isList="false" typeRef="java.lang.String" name="user"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="testLdapConnection">
+        <parameter isList="false" typeRef="java.lang.String" name="host"/>
+        <parameter isList="false" typeRef="java.lang.String" name="port"/>
+        <parameter isList="false" typeRef="java.lang.String" name="baseDn"/>
+        <parameter isList="false" typeRef="java.lang.String" name="adminLogin"/>
+        <parameter isList="false" typeRef="java.lang.String" name="adminPassword"/>
+        <parameter isList="false" typeRef="java.lang.String" name="identifier"/>
+        <parameter isList="false" typeRef="java.lang.String" name="searchedUser"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <dataobjects/>
+</service>

@@ -1,0 +1,160 @@
+1) Install CentOS6.1 with "Web Server" profile
+2) Once installed: change ifcfg-eth0 to enable ONBOOT, as well as any needed IP information
+3) yum install tomcat6-webapps
+--> Running transaction check
+---> Package tomcat6-webapps.noarch 0:6.0.24-35.el6 will be installed
+--> Processing Dependency: tomcat6 = 6.0.24-35.el6 for package: tomcat6-webapps-6.0.24-35.el6.noarch
+--> Processing Dependency: jakarta-taglibs-standard >= 1.1 for package: tomcat6-webapps-6.0.24-35.el6.noarch
+--> Running transaction check
+---> Package jakarta-taglibs-standard.noarch 0:1.1.1-11.4.el6 will be installed
+--> Processing Dependency: xalan-j2 >= 2.6.0 for package: jakarta-taglibs-standard-1.1.1-11.4.el6.noarch
+--> Processing Dependency: apache-tomcat-apis for package: jakarta-taglibs-standard-1.1.1-11.4.el6.noarch
+---> Package tomcat6.noarch 0:6.0.24-33.el6 will be updated
+---> Package tomcat6.noarch 0:6.0.24-35.el6 will be an update
+--> Processing Dependency: tomcat6-lib = 6.0.24-35.el6 for package: tomcat6-6.0.24-35.el6.noarch
+--> Running transaction check
+---> Package apache-tomcat-apis.noarch 0:0.1-1.el6 will be installed
+---> Package tomcat6-lib.noarch 0:6.0.24-33.el6 will be updated
+---> Package tomcat6-lib.noarch 0:6.0.24-35.el6 will be an update
+--> Processing Dependency: tomcat6-servlet-2.5-api = 6.0.24-35.el6 for package: tomcat6-lib-6.0.24-35.el6.noarch
+--> Processing Dependency: tomcat6-jsp-2.1-api = 6.0.24-35.el6 for package: tomcat6-lib-6.0.24-35.el6.noarch
+--> Processing Dependency: tomcat6-el-2.1-api = 6.0.24-35.el6 for package: tomcat6-lib-6.0.24-35.el6.noarch
+---> Package xalan-j2.noarch 0:2.7.0-9.8.el6 will be installed
+--> Running transaction check
+---> Package tomcat6-el-2.1-api.noarch 0:6.0.24-33.el6 will be updated
+---> Package tomcat6-el-2.1-api.noarch 0:6.0.24-35.el6 will be an update
+---> Package tomcat6-jsp-2.1-api.noarch 0:6.0.24-33.el6 will be updated
+---> Package tomcat6-jsp-2.1-api.noarch 0:6.0.24-35.el6 will be an update
+---> Package tomcat6-servlet-2.5-api.noarch 0:6.0.24-33.el6 will be updated
+---> Package tomcat6-servlet-2.5-api.noarch 0:6.0.24-35.el6 will be an update
+--> Finished Dependency Resolution
+
+yum install tomcat6-admin-webapps
+
+Edit /usr/share/tomcat6/conf/tomcat-users.xml to add the foolowing lines :
+<role rolename="manager"/>
+<user username="tomcat" password="s3cret" roles="manager"/>
+
+where s3cret is your password
+
+
+4) Install libvirt packages:
+yum install libvirt
+========================================================================================================================================
+ Package                               Arch                   Version                                     Repository               Size
+========================================================================================================================================
+Installing:
+ libvirt                               x86_64                 0.9.4-23.el6_2.4                            updates                 1.5 M
+Installing for dependencies:
+ augeas-libs                           x86_64                 0.9.0-1.el6                                 base                    313 k
+ avahi                                 x86_64                 0.6.25-11.el6                               base                    217 k
+ cyrus-sasl-md5                        x86_64                 2.1.23-13.el6                               base                     47 k
+ dnsmasq                               x86_64                 2.48-5.el6                                  base                    147 k
+ ebtables                              x86_64                 2.0.9-6.el6                                 base                     95 k
+ gnutls-utils                          x86_64                 2.8.5-4.el6                                 base                     99 k
+ iscsi-initiator-utils                 x86_64                 6.2.0.872-34.el6                            base                    614 k
+ libcgroup                             x86_64                 0.37-3.el6                                  base                    104 k
+ libdaemon                             x86_64                 0.14-1.el6                                  base                     28 k
+ libpciaccess                          x86_64                 0.12.1-1.el6                                base                     42 k
+ libvirt-client                        x86_64                 0.9.4-23.el6_2.4                            updates                 2.8 M
+ lzo                                   x86_64                 2.03-3.1.el6                                base                     55 k
+ lzop                                  x86_64                 1.02-0.9.rc1.el6                            base                     50 k
+ nc                                    x86_64                 1.84-22.el6                                 base                     57 k
+ netcf-libs                            x86_64                 0.1.9-2.el6                                 base                     51 k
+ numactl                               x86_64                 2.0.3-9.el6                                 base                     55 k
+ qemu-img                              x86_64                 2:0.12.1.2-2.209.el6_2.4                    updates                 338 k
+ radvd                                 x86_64                 1.6-1.el6                                   base                     75 k
+ yajl                                  x86_64                 1.0.7-3.el6                                 base                     27 k
+Updating for dependencies:
+ cyrus-sasl                            x86_64                 2.1.23-13.el6                               base                     78 k
+ cyrus-sasl-gssapi                     x86_64                 2.1.23-13.el6                               base                     33 k
+ cyrus-sasl-lib                        x86_64                 2.1.23-13.el6                               base                    136 k
+ cyrus-sasl-plain                      x86_64                 2.1.23-13.el6                               base                     30 k
+
+
+
+
+Update with latest version of libvirt:
+rpm -Uvh libvirt-0.9.8-0rc2.el6.x86_64.rpm libvirt-client-0.9.8-0rc2.el6.x86_64.rpm libvirt-python-0.9.8-0rc2.el6.x86_64.rpm
+
+Install virt-top
+yum install virt-top
+
+deactivate iptables  and redirect port 80 to 8080:
+echo "iptables -F INPUT" >> /etc/rc.local
+iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8080
+
+4) Install ImageMagik 
+yum install ImageMagick
+
+Installing:
+ ImageMagick                                x86_64                                6.5.4.7-5.el6                                        base                                1.7 M
+Installing for dependencies:
+ GConf2                                     x86_64                                2.28.0-6.el6                                         base                                964 k
+ ORBit2                                     x86_64                                2.14.17-3.1.el6                                      base                                168 k
+ libIDL                                     x86_64                                0.8.13-2.1.el6                                       base                                 83 k
+ libcroco                                   x86_64                                0.6.2-5.el6                                          base                                100 k
+ libgsf                                     x86_64                                1.14.15-5.el6                                        base                                116 k
+ librsvg2                                   x86_64                                2.26.0-5.el6_1.1                                     base                                138 k
+ libwmf-lite                                x86_64                                0.2.8.4-22.el6.centos                                base                                 51 k
+ sgml-common 
+
+
+
+4) chkconfig --level 345 tomcat6 on
+   service tomcat6 start 
+chkconfig --level 345 ntpd on
+service ntpd start
+
+mkdir -p /usr/share/tomcat6/.ssh
+ssh-keygen -t dsa -N "" -f /usr/share/tomcat6/.ssh/id_dsa
+perl -p -i -e "s/root/tomcat/g" /usr/share/tomcat6/.ssh/id_dsa.pub
+chown -R tomcat.tomcat /usr/share/tomcat6/.ssh
+
+
+
+
+yum install postgresql-server
+---> Package postgresql-server.x86_64 0:8.4.9-1.el6_1.1 will be installed
+--> Processing Dependency: postgresql-libs(x86-64) = 8.4.9-1.el6_1.1 for package: postgresql-server-8.4.9-1.el6_1.1.x86_64
+--> Processing Dependency: postgresql(x86-64) = 8.4.9-1.el6_1.1 for package: postgresql-server-8.4.9-1.el6_1.1.x86_64
+--> Running transaction check
+---> Package postgresql.x86_64 0:8.4.7-2.el6 will be updated
+---> Package postgresql.x86_64 0:8.4.9-1.el6_1.1 will be an update
+---> Package postgresql-libs.x86_64 0:8.4.7-2.el6 will be updated
+---> Package postgresql-libs.x86_64 0:8.4.9-1.el6_1.1 will be an updated
+
+chkconfig --level 345 postgresql on
+service postgresql initdb    # to initializa database
+service postgresql start
+
+
+
+
+### AS ROOT:
+useradd -d /var/lib/pgsql/ postgres
+vim /var/lib/pgsql/data/pg_hba.conf
+--> change "local all all ident" to "local all all trust"
+           "host all all 127.0.0.1/32 ident" to "host all all 127.0.0.1/32 trust"  
+
+su - postgres
+createuser -s -P openkvi
+    --> Enter password for new user openkvi
+
+exit and restart postgresql
+service postgresql restart
+
+createdb openkviDB -U openkvi -W
+    --> Enter passwd for user openkvi
+
+psql -U openkvi openkviDB -c "CREATE TABLE nodes (id SERIAL PRIMARY KEY, name VARCHAR(50) NOT NULL, ip VARCHAR(50) NOT NULL, hypervisor VARCHAR(50) NOT NULL, description VARCHAR(50));"
+
+psql -U openkvi openkviDB -c "CREATE TABLE vms (id SERIAL PRIMARY KEY, memory INT, nbcpu INT, freqcpu VARCHAR(50), arch VARCHAR(50), network VARCHAR(50), cdrom VARCHAR(50), name VARCHAR(50) NOT NULL, server VARCHAR(50) NOT NULL, disks VARCHAR(50));"
+
+
+
+#CREATE TABLE nodes (id SERIAL PRIMARY KEY, name VARCHAR(50) NOT NULL, ip VARCHAR(50) NOT NULL, hypervisor VARCHAR(50) NOT NULL, description VARCHAR(50));
+#CREATE TABLE vms (id SERIAL PRIMARY KEY, memory INT, nbcpu INT, freqcpu VARCHAR(50), arch VARCHAR(50), network VARCHAR(50), cdrom VARCHAR(50), name VARCHAR(50) NOT NULL, server VARCHAR(50) NOT NULL, disks VARCHAR(50));
+
+
+6) install ovnmanager service

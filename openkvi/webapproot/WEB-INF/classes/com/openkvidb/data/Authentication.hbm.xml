@@ -1,0 +1,45 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.openkvidb.data.Authentication" table="authentication" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="mode" type="string">
+            <column name="mode" length="32" not-null="true"/>
+        </property>
+        <property name="ldaphost" type="string">
+            <column name="ldaphost"/>
+        </property>
+        <property name="ldapport" type="string">
+            <column name="ldapport" length="16"/>
+        </property>
+        <property name="ldapadminlogin" type="string">
+            <column name="ldapadminlogin" length="64"/>
+        </property>
+        <property name="ldapadminpassword" type="string">
+            <column name="ldapadminpassword"/>
+        </property>
+        <property name="ldapbasedn" type="string">
+            <column name="ldapbasedn"/>
+        </property>
+        <property name="ldapcreationmode" type="string">
+            <column name="ldapcreationmode" length="32" not-null="true"/>
+        </property>
+        <property name="ldapdefaultrole" type="string">
+            <column name="ldapdefaultrole" length="50"/>
+        </property>
+        <property name="ldapidentifierfield" type="string">
+            <column name="ldapidentifierfield" length="64"/>
+        </property>
+        <property name="ldapfirstnamefield" type="string">
+            <column name="ldapfirstnamefield" length="64"/>
+        </property>
+        <property name="ldaplastnamefield" type="string">
+            <column name="ldaplastnamefield" length="64"/>
+        </property>
+        <property name="ldapmailfield" type="string">
+            <column name="ldapmailfield" length="64"/>
+        </property>
+    </class>
+</hibernate-mapping>

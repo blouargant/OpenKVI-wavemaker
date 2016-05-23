@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" springFile="vmXmlFile.spring.xml" type="JavaService" CRUDService="false" class="vmXmlFile" id="vmXmlFile">
+    <operation name="updateVmLiveMemory">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="memory"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmProcessor">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmLiveCpus">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="ncpu"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmNetworkLink">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmExtra">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmNetworks">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="netActions"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="deleteVmImage">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="image"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmBios">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="newBiosJson"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmDesc">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="path"/>
+        <parameter isList="false" typeRef="java.lang.String" name="device"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmStorages">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="ipaddr"/>
+        <parameter isList="false" typeRef="java.lang.String" name="storageActions"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="moveVmLink">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmDevice">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="xml"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmInput">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="todo"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmMemory">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="newMem"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="createVmImage">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="image"/>
+        <parameter isList="false" typeRef="java.lang.String" name="format"/>
+        <parameter isList="false" typeRef="java.lang.String" name="size"/>
+        <parameter isList="false" typeRef="java.lang.String" name="alloc"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateVmVideo">
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="todo"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <dataobjects/>
+</service>

@@ -1,0 +1,26 @@
+{
+	"methods": [{
+		"name": "getResource",
+		"operationType": null,
+		"parameters": [{
+			"name": "XmlFile",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "sampleJavaOperation",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "testJava",
+		"operationType": null,
+		"parameters": [{
+			"name": "input",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "getXmlData.json"
+}

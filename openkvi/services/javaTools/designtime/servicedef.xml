@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" springFile="javaTools.spring.xml" type="JavaService" CRUDService="false" class="javaTools" id="javaTools">
+    <operation name="setSecurityLevel">
+        <parameter isList="false" typeRef="java.lang.String" name="level"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="restartTomcat">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getSecurityLevel">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getSessionInfo">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="probeNeighborhood">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="createDirectory">
+        <parameter isList="false" typeRef="java.lang.String" name="directories"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="setSessionInfo">
+        <parameter isList="false" typeRef="java.lang.String" name="timeout"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getHelpFile">
+        <parameter isList="false" typeRef="java.lang.String" name="help"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="readLogFile">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="sleep">
+        <parameter isList="false" typeRef="java.lang.String" name="func"/>
+        <parameter isList="false" typeRef="int" name="sleep"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getTimeZones">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="deleteVmLocalFiles">
+        <parameter isList="false" typeRef="java.lang.String" name="directories"/>
+        <parameter isList="false" typeRef="java.lang.String" name="vmName"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="stopMonitoring">
+        <parameter isList="false" typeRef="int" name="clientId"/>
+    </operation>
+    <operation name="getDebug">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="setUser">
+        <parameter isList="false" typeRef="java.lang.String" name="name"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="setDebug">
+        <parameter isList="false" typeRef="java.lang.String" name="enabled"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="nodemanagerListener">
+        <parameter isList="false" typeRef="int" name="clientId"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="monitorInputString">
+        <parameter isList="false" typeRef="int" name="clientId"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="timeout">
+        <parameter isList="false" typeRef="java.lang.String" name="log"/>
+        <parameter isList="false" typeRef="int" name="sleeping"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="deleteDirectory">
+        <parameter isList="false" typeRef="java.lang.String" name="directory"/>
+        <return isList="false" typeRef="boolean"/>
+    </operation>
+    <dataobjects/>
+</service>

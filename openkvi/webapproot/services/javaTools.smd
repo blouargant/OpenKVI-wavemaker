@@ -1,0 +1,153 @@
+{
+	"methods": [{
+		"name": "createDirectory",
+		"operationType": null,
+		"parameters": [{
+			"name": "directories",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "deleteDirectory",
+		"operationType": null,
+		"parameters": [{
+			"name": "directory",
+			"type": "java.lang.String"
+		}],
+		"returnType": "boolean"
+	}, {
+		"name": "deleteVmLocalFiles",
+		"operationType": null,
+		"parameters": [{
+			"name": "directories",
+			"type": "java.lang.String"
+		}, {
+			"name": "vmName",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getDebug",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getHelpFile",
+		"operationType": null,
+		"parameters": [{
+			"name": "help",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getSecurityLevel",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getSessionInfo",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getTimeZones",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "monitorInputString",
+		"operationType": null,
+		"parameters": [{
+			"name": "clientId",
+			"type": "int"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "nodemanagerListener",
+		"operationType": null,
+		"parameters": [{
+			"name": "clientId",
+			"type": "int"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "probeNeighborhood",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "readLogFile",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "restartTomcat",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setDebug",
+		"operationType": null,
+		"parameters": [{
+			"name": "enabled",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setSecurityLevel",
+		"operationType": null,
+		"parameters": [{
+			"name": "level",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setSessionInfo",
+		"operationType": null,
+		"parameters": [{
+			"name": "timeout",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setUser",
+		"operationType": null,
+		"parameters": [{
+			"name": "name",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "sleep",
+		"operationType": null,
+		"parameters": [{
+			"name": "func",
+			"type": "java.lang.String"
+		}, {
+			"name": "sleep",
+			"type": "int"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "stopMonitoring",
+		"operationType": null,
+		"parameters": [{
+			"name": "clientId",
+			"type": "int"
+		}],
+		"returnType": null
+	}, {
+		"name": "timeout",
+		"operationType": null,
+		"parameters": [{
+			"name": "log",
+			"type": "java.lang.String"
+		}, {
+			"name": "sleeping",
+			"type": "int"
+		}],
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "javaTools.json"
+}

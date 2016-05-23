@@ -1,0 +1,52 @@
+<h1>What's new in OpenKVI 1.6 ?</h1>
+<p>
+<h2><u>Nodes:</u></h2>
+<dl>
+<dt><b>KVM servers SSH console</b>:</dt>
+<dd>
+ShellInABox has been integrated to OpenKVI.</br>
+This feature allows administrators to have SSH access to KVM nodes directly from OpenKVI web interface.</br>
+<i>Select a KVM Node &#8614; Console</i>
+</dd>
+</br>
+<dt><b>VLAN support</b>:</dt>
+<dd>
+Added "Portgroups" supports to Virtual Switches.</br>
+A Virtual Switch can hold one or more portgroup, and each portgroup can use a different VLAN tag.</br>
+<i>Select a KVM Node &#8614; Configuration &#8614; Networking</i>
+</dd>
+</br>
+<dt><b>Virtual Interface Migration</b>:</dt>
+<dd>
+An Administrator can move Virtual Machines' virtual interfaces between Portgroups and Virtual Switches with a simple Drag & Drop.
+Virtual Machines will be automatically reconfigured accordingly.</br>
+Note that <b>Live Interface</b> migration can only be done with Virtual Switches based on <b>Openvswitch</b>.</br>
+<i>Select a KVM Node &#8614; Configuration &#8614; Networking</i>
+</dd>
+</br>
+<dt><b>Support for SR-IOV Cards</b>:</dt>
+<dd>
+Added a new Virtual Switch type for SR-IOV feature.</br>
+A SR-IOV Virtual Switch is attached to a Physical Pool (ex eth0).</br>
+On boot, a Virtual Machine using a SR-IOV capable Virtual Switch will be given a SR-IOV Virtual Function.</br>
+The number of SR-IOV Virtual Functions available in a Physical Pool is limited and dependant of the underlying hardware.</br>
+Portgroups and VLANs can also be used on a SR-IOV Virtual Switch.</br>
+<b>NB:</b> A SR-IOV Virtual Function behave as a direct access to the Network Card, so the guest OS must also support the physical Network Card.</br>
+<i>Select a KVM Node &#8614; Configuration &#8614; Networking</i>
+</dd>
+</dl>
+
+</br>
+
+<h2><u>Interface:</u></h2>
+<dl>
+<dt><b>Compact view enhancements</b>:</dt>
+<dd>
+The task notification system has been replaced by a less intrusive one.</br>
+</dd>
+</br>
+</dl>
+</p>
+
+
+

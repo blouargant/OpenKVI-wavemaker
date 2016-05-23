@@ -1,0 +1,30 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.openkvidb.data.Users" table="users" schema="public" dynamic-insert="false" dynamic-update="false">
+        <id name="id" type="integer">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="login" type="string">
+            <column name="login" length="50" not-null="true"/>
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="50" not-null="true"/>
+        </property>
+        <property name="role" type="string">
+            <column name="role" length="50" not-null="true"/>
+        </property>
+        <property name="lastname" type="string">
+            <column name="lastname" length="50"/>
+        </property>
+        <property name="firstname" type="string">
+            <column name="firstname" length="50"/>
+        </property>
+        <property name="mail" type="string">
+            <column name="mail" length="50"/>
+        </property>
+        <property name="groupid" type="string">
+            <column name="groupid" length="50"/>
+        </property>
+    </class>
+</hibernate-mapping>

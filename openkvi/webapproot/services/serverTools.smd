@@ -1,0 +1,391 @@
+{
+	"methods": [{
+		"name": "connectToServer",
+		"operationType": null,
+		"parameters": [{
+			"name": "ipaddr",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}, {
+			"name": "force",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "createNetwork",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "createServerConfig",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "jsonString",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "deleteServer",
+		"operationType": null,
+		"parameters": [{
+			"name": "name",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getAllNodesInfo",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getAllVmsNetworks",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getEtcHosts",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getFileInfo",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "path",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getLocalHostname",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getNodeHardwareEvents",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getNodeLogs",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getNodePerformances",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getNodeSnmpConfiguration",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getNodeTimeConfiguration",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getNodesCoordinates",
+		"operationType": null,
+		"parameters": [{
+			"name": "nodeList",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getRunningOs",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "vName",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getServerCapabilities",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getServerInfo",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getServerNetworkInfos",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "force",
+			"type": "java.lang.Boolean"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getServerRessources",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getVmIp",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "vm",
+			"type": "java.lang.String"
+		}, {
+			"name": "mac",
+			"type": "java.lang.String"
+		}, {
+			"name": "range",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getVmListScreenshot",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "vmList",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "importLocalVms",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "vmList",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "listAllVms",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "listDirectory",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "path",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "notifyAll",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "request",
+			"type": "java.lang.String"
+		}, {
+			"name": "infos",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "probeNeighborhood",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "readFile",
+		"operationType": null,
+		"parameters": [{
+			"name": "file",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "readXml",
+		"operationType": null,
+		"parameters": [{
+			"name": "server",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "reconnectToServer",
+		"operationType": null,
+		"parameters": [{
+			"name": "ipaddr",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}, {
+			"name": "force",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "removeNetwork",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setEtcHosts",
+		"operationType": null,
+		"parameters": [{
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setNodeAdvancedTimeConfiguration",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setNodeIpmiConfiguration",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setNodeNtpServers",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setNodeSnmpConfiguration",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "setNodeTimeConfiguration",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "updateNetwork",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}, {
+			"name": "data",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "updateServerConfig",
+		"operationType": null,
+		"parameters": [{
+			"name": "jsonString",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}, {
+			"name": "log",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "virtop",
+		"operationType": null,
+		"parameters": [{
+			"name": "node",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "serverTools.json"
+}

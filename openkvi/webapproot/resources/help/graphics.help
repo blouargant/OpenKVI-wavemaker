@@ -1,0 +1,4 @@
+<p>
+Set the graphical access type. Default for KVM/Qemu is VNC.</br>
+The number of graphical entries must match the number of "Heads" defined previously.
+</p>

@@ -1,0 +1,97 @@
+Index: include/keyboard.js
+===================================================================
+--- include/keyboard.js	(revision 5021)
++++ include/keyboard.js	(working copy)
+@@ -136,15 +136,23 @@
+ 
+         return {
+             // sync on the appropriate keyboard event
+-            keydown: function(evt) { return syncKeyEvent(evt, true);},
+-            keyup: function(evt) { return syncKeyEvent(evt, false);},
++            keydown: function(evt) {
++                    return syncKeyEvent(evt, true);
++                },
++            keyup: function(evt) {
++                    return syncKeyEvent(evt, false);
++                },
+             // Call this with a non-keyboard event (such as mouse events) to use its modifier state to synchronize anyway
+             syncAny: function(evt) { return sync(evt);},
+ 
+             // is a shortcut modifier down?
+-            hasShortcutModifier: function() { return hasShortcutModifier(charModifier, state); },
++            hasShortcutModifier: function() {
++                    return hasShortcutModifier(charModifier, state); 
++                },
+             // if a char modifier is down, return the keys it consists of, otherwise return null
+-            activeCharModifier: function() { return hasCharModifier(charModifier, state) ? charModifier : null; }
++            activeCharModifier: function() {
++                    return hasCharModifier(charModifier, state) ? charModifier : null; 
++                }
+         };
+     }
+ 
+@@ -554,21 +562,57 @@
+             next(evt);
+             return;
+         }
+-        Util.Debug("EscapeModifiers: " + (evt.type == 'keydown' ? "down" : "up") + ", keysym: " + evt.keysym.keysym);
++        Util.Debug("#### EscapeModifiers: " + (evt.type == 'keydown' ? "down" : "up") + ", keysym: " + evt.keysym.keysym);
+ 
+         // undo modifiers except for AltGR that is not properly handled by Qemu
++        var escape_Alt_L = false;
++        var escape_Control_L = false;
++        var escape_Alt_GR = false;
+         for (var i = 0; i < evt.escape.length; ++i) {
+-            if (evt.escape[i] !== XK_ISO_Level3_Shift) {
+-                next({type: 'keyup', keyId: 0, keysym: keysyms.lookup(evt.escape[i])});
++            if (evt.escape[i] === XK_ISO_Level3_Shift) {
++                escape_Alt_GR = true;
++            } else if (evt.escape[i] === XK_Alt_L) {
++                escape_Alt_L = true;
++            } else if (evt.escape[i] === XK_Control_L) {
++                escape_Control_L = true;
+             }
+         }
++        if (escape_Alt_L && escape_Control_L) {
++            // Under windows ALT_L + CRTL_L = AltGR 
++            // but qemu do not understand it so we send AltGR
++            // so we send first send keyUp for CTRL and ALT to disable them 
++            Util.Debug("EscapeModifiers fake XK_Control_L UP");
++            next({type: 'keyup', keyId: 0, keysym: keysyms.lookup(XK_Control_L)})
++            Util.Debug("EscapeModifiers fake XK_Alt_L UP");
++            next({type: 'keyup', keyId: 0, keysym: keysyms.lookup(XK_Alt_L)})
++            // then send a fake AltGR down
++            Util.Debug("EscapeModifiers fake AltGR DOWN");
++            next({type: 'keydown', keyId: 0, keysym: keysyms.lookup(XK_ISO_Level3_Shift)})
++        } else {
++            for (i = 0; i < evt.escape.length; ++i) {
++                if (evt.escape[i] !== XK_ISO_Level3_Shift) {
++                    next({type: 'keyup', keyId: 0, keysym: keysyms.lookup(evt.escape[i])});
++                }
++            }
++        }
+         // send the character event
+         next(evt);
+-        // redo modifiers except for altGR
+         /* jshint shadow: true */
+-        for (var i = 0; i < evt.escape.length; ++i) {
+-            if (evt.escape[i] !== XK_ISO_Level3_Shift) {
+-                next({type: 'keydown', keyId: 0, keysym: keysyms.lookup(evt.escape[i])});
++        if (escape_Alt_L && escape_Control_L) {
++            // we then send a fake AltGR UP to simulate it under windows
++            Util.Debug("EscapeModifiers fake AltGR UP");
++            next({type: 'keyup', keyId: 0, keysym: keysyms.lookup(XK_ISO_Level3_Shift)})
++            // and fake keydowns to catch up with Alt and Ctrl keyup
++            Util.Debug("EscapeModifiers fake XK_Control_L down");
++            next({type: 'keydown', keyId: 0, keysym: keysyms.lookup(XK_Control_L)})
++            Util.Debug("EscapeModifiers fake XK_Alt_L UP");
++            next({type: 'keydown', keyId: 0, keysym: keysyms.lookup(XK_Alt_L)})
++        } else {
++            // redo modifiers except for altGR
++            for (i = 0; i < evt.escape.length; ++i) {
++                if (evt.escape[i] !== XK_ISO_Level3_Shift) {
++                    next({type: 'keydown', keyId: 0, keysym: keysyms.lookup(evt.escape[i])});
++                }
+             }
+         }
+         /* jshint shadow: false */

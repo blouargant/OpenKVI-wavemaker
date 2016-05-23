@@ -1,0 +1,288 @@
+<head>
+	<style type="text/css">
+		div.title {
+			margin-bottom: 1em;
+			font-weight: 14px;
+			font-weight: bold;
+			color: #336699;
+			page-break-inside: avoid;
+			page-break-after: avoid;
+			word-wrap: break-word;
+		}
+		/*Lists*/
+		ul {
+			padding-left:1.6em;
+			list-style-image:url(../images/dot.png);
+			list-style-type: circle;
+		}
+
+		ul ul {
+			list-style-image:url(../images/dot2.png);
+			list-style-type: circle;
+		}
+
+		ol {
+			list-style-image:none;
+			list-style-type: decimal;
+		}
+
+		dt {
+			font-weight:bold;
+			margin-bottom:0px;
+			padding-bottom:0px;
+		}
+
+		dd {
+			margin:0px;
+			margin-left:2em;
+			padding-top:0px;
+			padding-bottom: 1em;
+		}
+
+		li {
+			padding-top: 0px;
+			margin-top: 0px;
+			padding-bottom: 0px;
+			/*margin-bottom: 16px; */
+		}
+
+		li p, li div.para {
+			padding-top:0px;
+			margin-top:0px;
+			padding-bottom:0px;
+			margin-bottom:0.3em;
+		}
+		code {
+			font-family:"liberation mono", "bitstream vera mono", "dejavu mono", monospace;
+			white-space: pre-wrap;
+			word-wrap: break-word;
+			font-weight:bold;
+		}
+		.parameter code {
+			display: inline;
+			white-space: pre-wrap; /* css-3 */
+			white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+			white-space: -pre-wrap; /* Opera 4-6 */
+			white-space: -o-pre-wrap; /* Opera 7 */
+			word-wrap: break-word; /* Internet Explorer 5.5+ */
+		}
+		/*Table*/
+		div.table {
+			page-break-inside: avoid;
+		}
+
+		table {
+			border: 1px solid #444;
+			width:100%;
+			border-collapse:collapse;
+			table-layout: fixed;
+			word-wrap: break-word;
+		}
+
+		table.blockquote,
+		table.simplelist,
+		.calloutlist table {
+			border-style: none;
+		}
+
+		table th {
+			text-align:left;
+			background-color:#6699cc;
+			padding:.3em .5em;
+			color:white;
+		}
+
+			table td {
+			padding:.15em .5em;
+		}
+
+		table tr.even td {
+			background-color:#f5f5f5;
+		}
+
+		tr:nth-child(even) {
+			background-color: #eeeeee;
+		}
+
+		table th p:first-child, table td p:first-child, table  li p:first-child,
+		table th div.para:first-child, table td div.para:first-child, table  li div.para:first-child {
+			margin-top:0px;
+			padding-top:0px;
+			display:inline;
+		}
+
+		th, td {
+			border-style:none;
+			vertical-align: top;
+			/*border: 1px solid #000; */
+		}
+
+		.blockquote td, 
+		.simplelist th,
+		.simplelist td {
+			border: none;
+		}
+
+		table table td {
+			border-bottom:1px dotted #aaa;
+			background-color:white;
+			padding:.6em 0px;
+		}
+
+		table table {
+			border:1px solid white;
+		}
+
+		td.remarkval {
+			color:#444;
+		}
+
+		td.fieldval {
+			font-weight:bold;
+		}
+
+		.lbname, .lbtype, .lbdescr, .lbdriver, .lbhost {
+			color:white;
+			font-weight:bold;
+			background-color:#999;
+			width:120px;
+		}
+
+		td.remarkval {
+			width:230px;
+		}
+
+		td.tname {
+			font-weight:bold;
+		}
+
+		th.dbfield {
+			width:120px;
+		}
+
+		th.dbtype {
+			width:70px;
+		}
+
+		th.dbdefault {
+			width:70px;
+		}
+
+		th.dbnul {
+			width:70px;
+		}
+
+		th.dbkey {
+			width:70px;
+		}
+
+		span.book {
+			margin-top:4em;
+			display:block;
+			font-size: 11pt;
+		}
+
+		span.book a{
+			font-weight:bold;
+		}
+			span.chapter {
+			display:block;
+		}
+
+		table.simplelist td, .calloutlist table td {
+			border-style: none;
+		}
+
+
+	</style>
+</head>
+
+<div class="formalpara"><div class="title">timer</div>
+A timer specifies a time source used for guest clock synchronization.<br/>
+Only the <em><code>name</code></em>, <em><code>tickpolicy</code></em> and <em><code>present</code></em> are required, all other attributes are optional.
+</div>
+<div class="itemizedlist"><ul><li class="listitem"><div class="formalpara"><div class="title">name: The name of the time source to use</div>
+</div><div class="table"><a id="timer_element_name_attribute_values"></a><p class="title"></p><div class="table-contents"><table summary="name attribute values"><colgroup><col width="20%" /><col width="80%" /></colgroup>
+	<thead><tr><th class="">Value</th><th class="">Description</th></tr></thead>
+	<tbody><tr><td class="">platform</td>
+		<td class="">The master virtual time source which may be used to drive the policy of other time sources.
+		</td></tr>
+	<tr><td class="">pit</td>
+		<td class="">Programmable Interval Timer - a timer with periodic interrupts.
+		</td></tr>
+	<tr><td class="">rtc</td>
+		<td class="">Real Time Clock - a continuously running timer with periodic interrupts.
+		</td></tr>
+	<tr><td class="">hpet</td>
+		<td class="">High Precision Event Timer - multiple timers with periodic interrupts.
+		</td></tr>
+	<tr><td class="">tsc</td>
+		<td class="">Time Stamp Counter - counts the number of ticks since reset, no interrupts.
+		</td></tr>
+	<tr><td class="">kvmclock</td>
+	<td class="">KVM clock - recommended clock source for KVM guests. KVM pvclock, or kvm-clock lets guests read the host’s wall clock time.
+		</td></tr>
+</tbody></table></div></div><br class="table-break" /></li>
+
+<li class="listitem"><div class="formalpara"><div class="title">track: specifies what is tracked by the timer</div>
+Only valid for a name value of <em class="parameter"><code>platform</code></em> or <em class="parameter"><code>rtc</code></em>.
+</div><div class="table"><a id="timer_element_track_attribute_values"></a><p class="title"></p><div class="table-contents"><table summary="track attribute values"><colgroup><col width="20%" /><col width="80%" /></colgroup>
+	<thead><tr><th class="">Value</th><th class="">Description</th></tr></thead>
+	<tbody><tr><td class="">boot</td>
+		<td class="">Corresponds to old <span class="emphasis"><em>host</em></span> option, this is an unsupported tracking option.
+		</td></tr>
+	<tr><td class="">guest</td>
+		<td class="">RTC always tracks guest time.
+		</td></tr>
+	<tr><td class="">wall</td>
+		<td class="">RTC always tracks host time.
+		</td></tr>
+</tbody></table></div></div><br class="table-break" /></li>
+
+<li class="listitem"><div class="formalpara"><div class="title">tickpolicy: the policy used to pass ticks on to the guest</div></div><div class="table"><a id="timer_element_policy_attribute_values"></a><p class="title"></p><div class="table-contents"><table summary="tickpolicy attribute values"><colgroup><col width="20%" /><col width="80%" /></colgroup>
+	<thead><tr><th class="">Value</th><th class="">Description</th></tr></thead>
+	<tbody><tr><td class="">delay</td>
+		<td class="">Continue to deliver at normal rate (i.e. ticks are delayed).
+		</td></tr>
+	<tr><td class="">catchup</td>
+		<td class="">Deliver at a higher rate to catch up.
+		</td></tr>
+	<tr><td class="">merge</td>
+		<td class="">Ticks merged into one single tick.
+		</td></tr>
+	<tr><td class="">discard</td>
+		<td class="">All missed ticks are discarded.
+	</td></tr>
+</tbody></table></div></div><br class="table-break" /></li>
+
+<li class="listitem"><div class="formalpara"><div class="title">frequency</div>
+		Used to set a fixed frequency, measured in Hz. This attribute is only relevant for a name value of <em class="parameter"><code>tsc</code></em>. All other timers operate at a fixed frequency (<em class="parameter"><code>pit</code></em>, <em class="parameter"><code>rtc</code></em>), or at a frequency fully controlled by the guest (<em class="parameter"><code>hpet</code></em>).</div></li><br/>
+
+<li class="listitem"><div class="formalpara"><div class="title">mode: determines how the time source is exposed to the guest</div>
+Only relevant for a name value of <em class="parameter"><code>tsc</code></em></div>
+<div class="table"><a id="timer_element_mode_attribute_values"></a><p class="title"></p><div class="table-contents"><table summary="mode attribute values"><colgroup><col width="20%" /><col width="80%" /></colgroup>
+	<thead><tr><th class="">Value</th><th class="">Description</th></tr></thead>
+	<tbody><tr><td class="">auto</td>
+		<td class="">Native if TSC is unstable, otherwise allow native TSC access.
+		</td></tr>
+	<tr><td class="">native</td>
+		<td class="">Always allow native TSC access.
+		</td></tr>
+	<tr><td class="">emulate</td>
+		<td class="">Always emulate TSC.
+		</td></tr>
+	<tr><td class="">smpsafe</td>
+		<td class="">Always emulate TSC and interlock SMP
+		</td></tr>
+</tbody></table></div></div><br class="table-break" /></li>
+	
+<li class="listitem"><div class="formalpara"><div class="title">present: override the default set of timers visible to the guest</div>
+</div><div class="table"><a id="timer_element_present_attribute_values"></a><p class="title"></p><div class="table-contents"><table summary="present attribute values"><colgroup><col width="50%" /><col width="50%" /></colgroup>
+	<thead><tr><th class="">Value</th><th class="">Description</th></tr></thead>
+	<tbody><tr><td class="">yes</td>
+		<td class="">Force this timer to the visible to the guest.
+		</td></tr>
+	<tr><td class="">no</td>
+		<td class="">Force this timer to not be visible to the guest.
+	</td></tr>
+</tbody></table></div></div>

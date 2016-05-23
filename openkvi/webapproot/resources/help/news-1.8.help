@@ -1,0 +1,24 @@
+<h1>What's new in OpenKVI 1.8 ?</h1>
+<p>
+<h2><u>Nodes:</u></h2>
+<dl>
+<dt><b>Hardware monitoring</b>:</dt>
+<dd>
+Administrators can configure Hardware Agents to send events to a remote SNMP server.</br>
+Those events are also displayed in OpenKVI, in the <b>Log</b> tab of KVM servers.</br>
+<i>Note that the KVM server must be running NetOS6 6.5.3 or higher.</i></br>
+<font color="Blue">C.F. Section <b>2.4.3 Hardware traps</b> in user manual.</font>
+</dd>
+</br>
+<dt><b>Performances graph</b>:</dt>
+<dd>
+Jarmon & Collectd have been integrated in OpenKVI.</br>
+Those graphs are viewable in the <b>Performances</b> tab of KVM servers. They are automatically updated every minutes while the tab is open.</br>
+<i>Note that the KVM server must be running NetOS6 6.5.3 or higher.</i></br>
+<font color="Blue">C.F. Section <b>2.6 Performance monitoring</b> in user manual.</font>
+</dd>
+</br>
+</p>
+
+
+

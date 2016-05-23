@@ -1,0 +1,9 @@
+<p>
+Unchecking a togglable feature turns it off. Available features can be found by asking for server's capabilities, but a common set for fully virtualized domains are:
+</p>
+ <dl><dt><code>pae</code></dt><dd>Physical address extension mode allows 32-bit guests to address more than 4 GB of m
+emory.
+</dd><dt><code>acpi</code></dt><dd>ACPI is useful for power management, for example, with KVM guests it is required f
+or graceful shutdown to work.
+</dd><dt><code>apic</code></dt><dd>APIC devices permit more complex priority models, and is required for SMP systems.
+</dd><dt><code>hap</code></dt><dd>Enable use of Hardware Assisted Paging if available in the hardware.</dd></dl>

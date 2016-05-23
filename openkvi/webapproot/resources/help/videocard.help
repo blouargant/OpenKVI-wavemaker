@@ -1,0 +1,5 @@
+<p>
+Set the Video Card type (Cirrus, vga, vmvga, xen, vbox or qxl). Default for KVM/Qemu is Cirrus.</br>
+The "Heads" number correspond to the number of virtual screen the VM can provide.</br>
+THe "vram" parameter set the amount of memory allocated to the Virtual Card.</br> 
+</p>

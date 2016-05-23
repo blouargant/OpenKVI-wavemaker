@@ -1,0 +1,501 @@
+body.tundra .Main .wmlayout .Main-panelTreeLeft {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelTreeRight {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-KVMTree {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panelTreeCenter {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panelLogLeft {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelLogRight {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoLeft {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoRight {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-splitterHor {
+	
+}
+
+body.tundra .Main .wmlayout .Main-splitter1 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel1 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-TabCenterOverview {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoLeft3 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoRight3 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoLeft1 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoRight1 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoLeft2 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoRight2 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panel2 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel8 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel3 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel7 {
+	
+}
+
+body.tundra  .Main-MenuDialogCenter {
+	
+}
+
+body.tundra  .Main-panelMenuCenter {
+	background-color:#fdf8e5;
+}
+
+body.tundra .Main .wmlayout .Main-popupMenuServer {
+	background-color:#fdf8e5;
+}
+
+body.tundra .Main .wmlayout .Main-panel4 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel9 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoLeft4 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-TabCenterVms {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoRight5 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoLeft5 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoRight4 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelDatacenter {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoLeft7 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoRight7 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panel29 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel34 {
+	
+}
+
+body.tundra  .Main-panel14 {
+	
+}
+
+body.tundra  .Main-panelServerPopup {
+	background-color:#ffff7ca;
+}
+
+body.tundra  .Main-serverPopup {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoLeft6 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_left.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelInfoRight6 {
+	background-image:url('resources/images/imagelists/chrome_lightgray_vert_right.png');
+	background-repeat:repeat-y;
+}
+
+body.tundra .Main .wmlayout .Main-panelHeader {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel65 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel66 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panelServerStorages {
+	background-color:#dfd8d8;
+}
+
+body.tundra .Main .wmlayout .Main-panelVmProcessor {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel72 {
+	
+}
+
+body.tundra .Main .wmlayout .Main-storageGrid {
+	background-color:#eeeeee;
+}
+
+body.tundra .Main .wmlayout .Main-pictureLoadingBoard {
+	
+}
+
+body.tundra .Main .wmlayout .Main-htmlPhysicalInterfaces {
+	background-color:#e9eace;
+}
+
+body.tundra .Main .wmlayout .Main-htmlVmListNetwork {
+	background-color:#feffdb;
+}
+
+body.tundra .Main .wmlayout .Main-labelAttachedVm {
+	background-color:#feffdb;
+}
+
+body.tundra .Main .wmlayout .Main-panelServerCoordinates {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panelSubHeader {
+	
+}
+
+body.tundra .Main .wmlayout .Main-panel85 {
+	background-image:url('resources/images/logos/note-280.png');
+	background-position:right top;
+	background-color:#eeeeee;	
+}
+
+body.tundra .Main .wmlayout .Main-panelDesc {
+	
+}
+
+body.tundra  .Main-panel219 {
+	background-color: #f9f8e0;
+}
+.wm_BorderTopStyle_NoCurve { 
+        -moz-border-radius-topleft: 0px !important; 
+        -moz-border-radius-topright: 0px !important; 
+        -webkit-border-top-left-radius: 0px !important; 
+        -webkit-border-top-right-radius: 0px !important; 
+        border-top-left-radius: 0px !important; 
+        border-top-right-radius: 0px !important; 
+} 
+
+.wm_BorderTopStyle_Curved4px { 
+        -moz-border-radius-topleft: 4px !important; 
+        -moz-border-radius-topright: 4px !important; 
+        -webkit-border-top-left-radius: 4px !important; 
+        -webkit-border-top-right-radius: 4px !important; 
+        border-top-left-radius: 4px !important; 
+        border-top-right-radius: 4px !important; 
+} 
+
+.wm_BorderTopStyle_Curved8px { 
+        -moz-border-radius-topleft: 8px !important; 
+        -moz-border-radius-topright: 8px !important; 
+        -webkit-border-top-left-radius: 8px !important; 
+        -webkit-border-top-right-radius: 8px !important; 
+        border-top-left-radius: 8px !important; 
+        border-top-right-radius: 8px !important; 
+} 
+
+.wm_BorderTopStyle_Curved12px { 
+        -moz-border-radius-topleft: 12px !important; 
+        -moz-border-radius-topright: 12px !important; 
+        -webkit-border-top-left-radius: 12px !important; 
+        -webkit-border-top-right-radius: 12px !important; 
+        border-top-left-radius: 12px !important; 
+        border-top-right-radius: 12px !important; 
+} 
+
+.wm_BorderBottomStyle_NoCurve { 
+        -moz-border-radius-bottomleft: 0px !important; 
+        -moz-border-radius-bottomright: 0px !important; 
+        -webkit-border-bottom-right-radius: 0px !important; 
+        -webkit-border-bottom-left-radius: 0px !important; 
+        border-bottom-right-radius: 0px !important; 
+        border-bottom-left-radius: 0px !important; 
+} 
+
+.wm_BorderBottomStyle_Curved4px { 
+        -moz-border-radius-bottomleft: 4px !important; 
+        -moz-border-radius-bottomright: 4px !important; 
+        -webkit-border-bottom-right-radius: 4px !important; 
+        -webkit-border-bottom-left-radius: 4px !important; 
+        border-bottom-right-radius: 4px !important; 
+        border-bottom-left-radius: 4px !important; 
+} 
+
+.wm_BorderBottomStyle_Curved8px { 
+        -moz-border-radius-bottomleft: 8px !important; 
+        -moz-border-radius-bottomright: 8px !important; 
+        -webkit-border-bottom-right-radius: 8px !important; 
+        -webkit-border-bottom-left-radius: 8px !important; 
+        border-bottom-right-radius: 8px !important; 
+        border-bottom-left-radius: 8px !important; 
+} 
+
+.wm_BorderBottomStyle_Curved12px { 
+        -moz-border-radius-bottomleft: 12px !important; 
+        -moz-border-radius-bottomright: 12px !important; 
+        -webkit-border-bottom-right-radius: 12px !important; 
+        -webkit-border-bottom-left-radius: 12px !important; 
+        border-bottom-right-radius: 12px !important; 
+        border-bottom-left-radius: 12px !important; 
+} 
+body.tundra .Main .wmlayout .Main-panelVmStorages {
+	background-color:#dfd8d8;
+}
+div.nodeDashboardPanel {
+    border-radius: 15px 40px;
+    min-width:220px;
+    min-height: 100px;
+    margin: 10px;
+    padding-top: 8px;
+    border: 1px solid #999999;
+    height: auto;
+    width: auto;
+    float: left;
+    text-align: center;
+    background: Linen ;            
+}
+div.nodeDashboardHider {
+    border-radius: 5px 5px 0px 0px;
+    height: 14px;
+    width: 50px;
+    cursor: pointer;
+    border-top: 1px solid #999999;
+    border-left: 1px solid #999999;
+    border-right: 1px solid #999999;
+    -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+    -o-box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+}
+div.nodeDashboardPanel img {
+    display: inline;
+    margin-right: 5px;
+}
+div.nodeDashboardPanel:hover {
+    border: 1px solid #34345f;
+}
+div.nodeDashboardTitle {
+    min-height: 25px;
+    margin-right: 2px;
+    margin-top: 1px;
+    border-bottom: 1px solid #b3b8c4;
+    padding-bottom: 5px;
+}
+div.nodeDashboardTitle label {
+    cursor: pointer;
+    text-align: center;
+    font-weight: normal;
+    padding-left: 15px;
+    padding-right: 10px;
+    color: Linen;
+    font-size: 120%;            
+    -moz-text-shadow: 0 0 2px black;
+    -webkit-text-shadow: 0 0 2px black;
+    -o-text-shadow: 0 0 2px black;
+    text-shadow: 0 0 2px black;
+}
+div.nodeDashboardTitle img {
+    cursor: pointer;
+    align: right;
+    margin-top: 10px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #999999;
+    -webkit-border-radius: 18px;
+    -moz-border-radius: 18px;
+    -o-border-radius: 18px;
+    border-radius: 18px;
+    -moz-box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+    -o-box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+    /* Prevent background color leak outs */
+    -webkit-background-clip: padding-box; 
+    -moz-background-clip:    padding; 
+    background-clip:         padding-box;
+}
+div.openkvi_PanelShadow {
+    -moz-box-shadow: 5px 5px 5px Grey;
+    -webkit-box-shadow: 5px 5px 5px Grey;
+    -o-box-shadow: 5px 5px 5px Grey;
+    box-shadow: 5px 5px 5px Grey;
+}
+div.openkvi_SmallShadow {
+    -moz-box-shadow: 2px 2px 4px Grey;
+    -webkit-box-shadow: 2px 2px 4px Grey;
+    -o-box-shadow: 2px 2px 4px Grey;
+    box-shadow: 2px 2px 4px Grey;
+}
+div.openkvi_CadetBlue_gradient {
+    background: linen; /* Old browsers */
+    background: -moz-linear-gradient(top, PowderBlue 0px, CadetBlue 4px, Teal 25px, CadetBlue 45px, linen 50px); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, PowderBlue 0px, CadetBlue 4px, Teal 25px, CadetBlue 45px, linen 50px); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, PowderBlue 0px, CadetBlue 4px, Teal 25px, CadetBlue 45px, linen 50px); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, PowderBlue 0px, CadetBlue 4px, Teal 25px, CadetBlue 45px, linen 50px); /* IE10+ */
+    background: linear-gradient(to bottom, PowderBlue 0px, CadetBlue 4px, Teal 25px, CadetBlue 45px, linen 50px); /* W3C */
+}
+div.openkvi_LightSteelBlue_gradient {
+    background: linen; /* Old browsers */
+    background: -moz-linear-gradient(top, linen 0px, LightSteelBlue 4px, LightSlateGray 25px, LightSteelBlue 45px, linen 50px); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, linen 0px, LightSteelBlue 4px, LightSlateGray 25px, LightSteelBlue 45px, linen 50px); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, linen 0px, LightSteelBlue 4px, LightSlateGray 25px, LightSteelBlue 45px, linen 50px); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, linen 0px, LightSteelBlue 4px, LightSlateGray 25px, LightSteelBlue 45px, linen 50px); /* IE10+ */
+    background: linear-gradient(to bottom, linen 0px, LightSteelBlue 4px, LightSlateGray 25px, LightSteelBlue 45px, linen 50px); /* W3C */
+}
+div.openkvi_LightSlateGray_gradient {
+    background: linen; /* Old browsers */
+    background: -moz-linear-gradient(top, LightSteelBlue 0px, LightSlateGray 4px, DarkSlateGray 25px, LightSlateGray 45px, DimGray 50px); /* FF3.6+ */
+    background: -webkit-linear-gradient(top, LightSteelBlue 0px, LightSlateGray 4px, DarkSlateGray 25px, LightSlateGray 45px, DimGray 50px); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, LightSteelBlue 0px, LightSlateGray 4px, DarkSlateGray 25px, LightSlateGray 45px, DimGray 50px); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, LightSteelBlue 0px, LightSlateGray 4px, DarkSlateGray 25px, LightSlateGray 45px, DimGray 50px); /* IE10+ */
+    background: linear-gradient(to bottom, LightSteelBlue 0px, LightSlateGray 4px, DarkSlateGray 25px, LightSlateGray 45px, DimGray 50px); /* W3C */
+}body.tundra .Main .wmlayout .Main-labelNbUnseenMsg {
+	background: GoldenRod;
+}
+
+div.smallCircle {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #999999;
+    /*padding-top: 2px;
+    padding-bottom: 2px;*/
+    line-height:18px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+.openkvi_curved_8px {
+    -moz-border-radius-topleft: 8px !important; 
+    -moz-border-radius-topright: 8px !important; 
+    -webkit-border-top-left-radius: 8px !important; 
+    -webkit-border-top-right-radius: 8px !important; 
+    border-top-left-radius: 8px !important; 
+    border-top-right-radius: 8px !important; 
+    -moz-border-radius-bottomleft: 8px !important; 
+    -moz-border-radius-bottomright: 8px !important; 
+    -webkit-border-bottom-right-radius: 8px !important;
+    -webkit-border-bottom-left-radius: 8px !important; 
+    border-bottom-right-radius: 8px !important; 
+    border-bottom-left-radius: 8px !important;
+}
+
+.openkvi_curved_tooltip {
+    -moz-border-radius-topleft: 0px !important; 
+    -moz-border-radius-topright: 8px !important; 
+    -webkit-border-top-left-radius: 0px !important; 
+    -webkit-border-top-right-radius: 8px !important; 
+    border-top-left-radius: 0px !important; 
+    border-top-right-radius: 8px !important; 
+    -moz-border-radius-bottomleft: 8px !important; 
+    -moz-border-radius-bottomright: 8px !important; 
+    -webkit-border-bottom-right-radius: 8px !important;
+    -webkit-border-bottom-left-radius: 8px !important; 
+    border-bottom-right-radius: 8px !important; 
+    border-bottom-left-radius: 8px !important;
+}
+
+.pnotify_notice div.ui-pnotify-container {
+    background-image: none;
+    background-color: DeepSkyBlue;
+    border: 1px solid MidnightBlue;
+    color: MidnightBlue;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+.pnotify_help div.ui-pnotify-container {
+    background-image: none;
+    background-color: DimGray;
+    border: 1px solid DarkSlateGray;
+    color: GhostWhite;
+    display: -moz-inline-stack;
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}

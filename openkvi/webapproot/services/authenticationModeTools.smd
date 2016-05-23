@@ -1,0 +1,68 @@
+{
+	"methods": [{
+		"name": "AutoSubscribeLdapUser",
+		"operationType": null,
+		"parameters": [{
+			"name": "user",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getAuthenticationData",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "com.openkvidb.data.Authentication"
+	}, {
+		"name": "getAuthenticationMode",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getLdapUserInfo",
+		"operationType": null,
+		"parameters": [{
+			"name": "login",
+			"type": "java.lang.String"
+		}, {
+			"name": "password",
+			"type": "java.lang.String"
+		}, {
+			"name": "user",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getSubscriptionMode",
+		"operationType": null,
+		"parameters": null,
+		"returnType": "java.lang.String"
+	}, {
+		"name": "testLdapConnection",
+		"operationType": null,
+		"parameters": [{
+			"name": "host",
+			"type": "java.lang.String"
+		}, {
+			"name": "port",
+			"type": "java.lang.String"
+		}, {
+			"name": "baseDn",
+			"type": "java.lang.String"
+		}, {
+			"name": "adminLogin",
+			"type": "java.lang.String"
+		}, {
+			"name": "adminPassword",
+			"type": "java.lang.String"
+		}, {
+			"name": "identifier",
+			"type": "java.lang.String"
+		}, {
+			"name": "searchedUser",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "authenticationModeTools.json"
+}

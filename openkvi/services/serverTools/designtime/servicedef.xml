@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" springFile="serverTools.spring.xml" type="JavaService" CRUDService="false" class="serverTools" id="serverTools">
+    <operation name="updateServerConfig">
+        <parameter isList="false" typeRef="java.lang.String" name="jsonString"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="log"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="reconnectToServer">
+        <parameter isList="false" typeRef="java.lang.String" name="ipaddr"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="force"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getVmIp">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="vm"/>
+        <parameter isList="false" typeRef="java.lang.String" name="mac"/>
+        <parameter isList="false" typeRef="java.lang.String" name="range"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getRunningOs">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getNodeLogs">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="probeNeighborhood">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getServerInfo">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="setNodeNtpServers">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getServerRessources">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="updateNetwork">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="createNetwork">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getEtcHosts">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getNodesCoordinates">
+        <parameter isList="false" typeRef="java.lang.String" name="nodeList"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getNodePerformances">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getAllVmsNetworks">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="notifyAll">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="request"/>
+        <parameter isList="false" typeRef="java.lang.String" name="infos"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="setNodeSnmpConfiguration">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getLocalHostname">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getNodeHardwareEvents">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getFileInfo">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="path"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="setEtcHosts">
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="connectToServer">
+        <parameter isList="false" typeRef="java.lang.String" name="ipaddr"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="force"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="removeNetwork">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getServerCapabilities">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="listAllVms">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="readXml">
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getVmListScreenshot">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="vmList"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="createServerConfig">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="jsonString"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="setNodeTimeConfiguration">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="setNodeAdvancedTimeConfiguration">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="deleteServer">
+        <parameter isList="false" typeRef="java.lang.String" name="name"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getServerNetworkInfos">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.Boolean" name="force"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getNodeSnmpConfiguration">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="listDirectory">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="path"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="importLocalVms">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="vmList"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="setNodeIpmiConfiguration">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <parameter isList="false" typeRef="java.lang.String" name="data"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="virtop">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getNodeTimeConfiguration">
+        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="readFile">
+        <parameter isList="false" typeRef="java.lang.String" name="file"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getAllNodesInfo">
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <dataobjects/>
+</service>

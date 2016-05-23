@@ -1,0 +1,13 @@
+{
+	"__metaData": {
+		"service_invalid_javaTools": false, 
+		"service_invalid_vmTools": true, 
+		"service_invalid_sshClient": false, 
+		"service_invalid_serverTools": false, 
+		"service_invalid_snapshotTools": false, 
+		"service_invalid_authenticationModeTools": false, 
+		"service_invalid_vmXmlFile": false, 
+		"service_invalid_authenticateUsers": false, 
+		"service_invalid_zeroMQ": false
+	}
+}

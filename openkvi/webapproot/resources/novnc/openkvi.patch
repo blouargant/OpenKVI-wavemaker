@@ -1,0 +1,519 @@
+diff -Naur ../noVNC-2015_03_02/include/base.css ./include/base.css
+--- ../noVNC-2015_03_02/include/base.css	2015-03-02 09:32:24.000000000 +0100
++++ ./include/base.css	2015-03-08 12:35:37.000000000 +0100
+@@ -238,6 +238,23 @@
+  * Advanced Styling
+  */
+ 
++.openkvi_status_bar {
++  /*width: 100%;*/
++  padding-left: 10px;
++  padding-right: 10px;
++  /*
++  border-bottom-left-radius: 1em;
++  border-bottom-right-radius: 1em;
++  */
++  background: #b2bdcd; /* Old browsers */
++  background: -moz-linear-gradient(top, #b2bdcd 0%, #899cb3 49%, #7e93af 51%, #6e84a3 100%); /* FF3.6+ */
++  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b2bdcd), color-stop(49%,#899cb3), color-stop(51%,#7e93af), color-stop(100%,#6e84a3)); /* Chrome,Safari4+ */
++  background: -webkit-linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* Chrome10+,Safari5.1+ */
++  background: -o-linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* Opera11.10+ */
++  background: -ms-linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* IE10+ */
++  background: linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* W3C */
++}
++
+ .noVNC_status_normal {
+   background: #b2bdcd; /* Old browsers */
+   background: -moz-linear-gradient(top, #b2bdcd 0%, #899cb3 49%, #7e93af 51%, #6e84a3 100%); /* FF3.6+ */
+@@ -313,6 +330,104 @@
+  /*box-shadow:inset 0.4px 0.4px 0.4px #000000;*/
+ }
+ 
++.openkvi_status_button {
++  font-size: 12px;
++  padding: 4px;
++  vertical-align: middle;
++  border:1px solid #869dbc;
++  -webkit-border-radius: 4px;
++  -moz-border-radius: 4px;
++  border-radius: 4px;
++  background: #b2bdcd; /* Old browsers */
++  background: -moz-linear-gradient(top, #b2bdcd 0%, #899cb3 49%, #7e93af 51%, #6e84a3 100%); /* FF3.6+ */
++  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b2bdcd), color-stop(49%,#899cb3), color-stop(51%,#7e93af), color-stop(100%,#6e84a3)); /* Chrome,Safari4+ */
++  background: -webkit-linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* Chrome10+,Safari5.1+ */
++  background: -o-linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* Opera11.10+ */
++  background: -ms-linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* IE10+ */
++  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2bdcd', endColorstr='#6e84a3',GradientType=0 ); /* IE6-9 */
++  background: linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* W3C */
++  /*box-shadow:inset 0.4px 0.4px 0.4px #000000;*/
++}
++
++.openkvi_status_button_selected {
++  font-size: 12px;
++  padding: 4px;
++  vertical-align: middle;
++  border:1px solid #4366a9;
++  -webkit-border-radius: 4px;
++  -moz-border-radius: 4px;
++  border-radius: 4px;
++  background: #779ced; /* Old browsers */
++  background: -moz-linear-gradient(top, #779ced 0%, #3970e0 49%, #2160dd 51%, #2463df 100%); /* FF3.6+ */
++  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#779ced), color-stop(49%,#3970e0), color-stop(51%,#2160dd), color-stop(100%,#2463df)); /* Chrome,Safari4+ */
++  background: -webkit-linear-gradient(top, #779ced 0%,#3970e0 49%,#2160dd 51%,#2463df 100%); /* Chrome10+,Safari5.1+ */
++  background: -o-linear-gradient(top, #779ced 0%,#3970e0 49%,#2160dd 51%,#2463df 100%); /* Opera11.10+ */
++  background: -ms-linear-gradient(top, #779ced 0%,#3970e0 49%,#2160dd 51%,#2463df 100%); /* IE10+ */
++  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779ced', endColorstr='#2463df',GradientType=0 ); /* IE6-9 */
++  background: linear-gradient(top, #779ced 0%,#3970e0 49%,#2160dd 51%,#2463df 100%); /* W3C */
++ /*box-shadow:inset 0.4px 0.4px 0.4px #000000;*/
++}
++
++.openkvi_ctrlaltdel {
++  font-size: 12px;
++  color: FireBrick;
++  padding: 4px;
++  vertical-align: middle;
++  border:1px solid #869dbc;
++  -webkit-border-radius: 4px;
++  -moz-border-radius: 4px;
++  border-radius: 4px;
++  background: #b2bdcd; /* Old browsers */
++  background: -moz-linear-gradient(top, #b2bdcd 0%, #899cb3 49%, #7e93af 51%, #6e84a3 100%); /* FF3.6+ */
++  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#b2bdcd), color-stop(49%,#899cb3), color-stop(51%,#7e93af), color-stop(100%,#6e84a3)); /* Chrome,Safari4+ */
++  background: -webkit-linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* Chrome10+,Safari5.1+ */
++  background: -o-linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* Opera11.10+ */
++  background: -ms-linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* IE10+ */
++  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b2bdcd', endColorstr='#6e84a3',GradientType=0 ); /* IE6-9 */
++  background: linear-gradient(top, #b2bdcd 0%,#899cb3 49%,#7e93af 51%,#6e84a3 100%); /* W3C */
++  /*box-shadow:inset 0.4px 0.4px 0.4px #000000;*/
++}
++.openkvi_ctrlaltdel:hover {
++  font-size: 12px;
++  padding: 4px;
++  color: black;
++  vertical-align: middle;
++  border:1px solid #869dbc;
++  -webkit-border-radius: 4px;
++  -moz-border-radius: 4px;
++  border-radius: 4px;
++  background: #e9ebb4; /* Old browsers */
++  background: -moz-linear-gradient(top, #e9ebb4 0%, #de7e62 49%, #dd775d 51%, #d20909 100%); /* FF3.6+ */
++  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e9ebb4), color-stop(49%,#de7e62), color-stop(51%,#dd775d), color-stop(100%,#d20909)); /* Chrome,Safari4+ */
++  background: -webkit-linear-gradient(top, #e9ebb4 0%,#de7e62 49%,#dd775d 51%,#d20909 100%); /* Chrome10+,Safari5.1+ */
++  background: -o-linear-gradient(top, #e9ebb4 0%,#de7e62 49%,#dd775d 51%,#d20909 100%); /* Opera11.10+ */
++  background: -ms-linear-gradient(top, #e9ebb4 0%,#de7e62 49%,#dd775d 51%,#d20909 100%); /* IE10+ */
++  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e9ebb4', endColorstr='#d20909',GradientType=0 ); /* IE6-9 */
++  background: linear-gradient(top, #e9ebb4 0%,#de7e62 49%,#dd775d 51%,#d20909 100%); /* W3C */
++  /*box-shadow:inset 0.4px 0.4px 0.4px #000000;*/
++}
++.openkvi_ctrlaltdel:active {
++  font-size: 12px;
++  padding: 4px;
++  color: black;
++  vertical-align: middle;
++  border:1px solid #4366a9;
++  -webkit-border-radius: 4px;
++  -moz-border-radius: 4px;
++  border-radius: 4px;
++  background: #779ced; /* Old browsers */
++  background: -moz-linear-gradient(top, #779ced 0%, #3970e0 49%, #2160dd 51%, #2463df 100%); /* FF3.6+ */
++  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#779ced), color-stop(49%,#3970e0), color-stop(51%,#2160dd), color-stop(100%,#2463df)); /* Chrome,Safari4+ */
++  background: -webkit-linear-gradient(top, #779ced 0%,#3970e0 49%,#2160dd 51%,#2463df 100%); /* Chrome10+,Safari5.1+ */
++  background: -o-linear-gradient(top, #779ced 0%,#3970e0 49%,#2160dd 51%,#2463df 100%); /* Opera11.10+ */
++  background: -ms-linear-gradient(top, #779ced 0%,#3970e0 49%,#2160dd 51%,#2463df 100%); /* IE10+ */
++  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#779ced', endColorstr='#2463df',GradientType=0 ); /* IE6-9 */
++  background: linear-gradient(top, #779ced 0%,#3970e0 49%,#2160dd 51%,#2463df 100%); /* W3C */
++ /*box-shadow:inset 0.4px 0.4px 0.4px #000000;*/
++}
++
++
++
+ 
+ /*Settings Bubble*/
+ .triangle-right {
+@@ -434,7 +549,7 @@
+ #sendEscButton { display: inline; }
+ 
+ /* left-align the status text on lower resolutions */
+-@media screen and (max-width: 800px){
++@media screen and (max-width: 640px){
+   #noVNC_status {
+     z-index: 1;
+     position: relative;
+diff -Naur ../noVNC-2015_03_02/include/input.js ./include/input.js
+--- ../noVNC-2015_03_02/include/input.js	2015-03-02 09:32:24.000000000 +0100
++++ ./include/input.js	2015-03-06 15:37:47.000000000 +0100
+@@ -21,6 +21,8 @@
+         this._keyDownList = [];         // List of depressed keys
+                                         // (even if they are happy)
+ 
++        this._keyDown = 0;
++
+         Util.set_defaults(this, defaults, {
+             'target': document,
+             'focused': true
+@@ -46,7 +48,6 @@
+ 
+     Keyboard.prototype = {
+         // private methods
+-
+         _handleRfbEvent: function (e) {
+             if (this._onKeyPress) {
+                 Util.Debug("onKeyPress " + (e.type == 'keydown' ? "down" : "up") +
+@@ -56,13 +57,16 @@
+         },
+ 
+         _handleKeyDown: function (e) {
++            Util.Debug("_handleKeyDown");
+             if (!this._focused) { return true; }
+ 
+             if (this._handler.keydown(e)) {
++                this._keyDown = e.keyCode;
+                 // Suppress bubbling/default actions
+                 Util.stopEvent(e);
+                 return false;
+             } else {
++                this._keyDown = e.keyCode;
+                 // Allow the event to bubble and become a keyPress event which
+                 // will have the character code translated
+                 return true;
+@@ -70,6 +74,11 @@
+         },
+ 
+         _handleKeyPress: function (e) {
++            Util.Debug("_handleKeyPress: "+this._keyDown);
++            e.previousKeyDown = this._keyDown;
++
++            Object.getOwnPropertyNames(e).forEach(function(val, idx, array) {
++            })
+             if (!this._focused) { return true; }
+ 
+             if (this._handler.keypress(e)) {
+diff -Naur ../noVNC-2015_03_02/include/keyboard.js ./include/keyboard.js
+--- ../noVNC-2015_03_02/include/keyboard.js	2015-03-02 09:32:24.000000000 +0100
++++ ./include/keyboard.js	2015-03-06 15:31:51.000000000 +0100
+@@ -177,9 +177,14 @@
+             codepoint = evt.keyCode;
+         }
+         if (codepoint) {
+-            var res = keysyms.fromUnicode(substituteCodepoint(codepoint));
+-            if (res) {
++            if (isNumpad(evt)) {
++                var res = keysyms.lookup(keysymFromKeyCode(evt.previousKeyDown, evt.shiftKey));
+                 return res;
++            } else {
++                var res = keysyms.fromUnicode(substituteCodepoint(codepoint));
++                if (res) {
++                    return res;
++                }
+             }
+         }
+         // we could check evt.key here.
+@@ -187,7 +192,8 @@
+         // so we "just" need to map them to keysym, but AFAIK this is only available in IE10, which also provides evt.key
+         // so we don't *need* it yet
+         if (evt.keyCode) {
+-            return keysyms.lookup(keysymFromKeyCode(evt.keyCode, evt.shiftKey));
++            var res = keysyms.lookup(keysymFromKeyCode(evt.keyCode, evt.shiftKey));
++            return res;
+         }
+         if (evt.which) {
+             return keysyms.lookup(keysymFromKeyCode(evt.which, evt.shiftKey));
+@@ -195,6 +201,21 @@
+         return null;
+     }
+ 
++    // Check if event is from a numpad
++    function isNumpad(evt) {
++        var res = false;
++        if (evt.charCode && (evt.charCode >= 48 && evt.charCode <= 57)) {
++            if (evt.previousKeyDown >= 0x60 && evt.previousKeyDown <= 0x69) {
++                Util.Debug("keycode is numpad");
++                res = true;
++            }
++        } else if (evt.charCode && evt.charCode === 47 && evt.previousKeyDown === 0x6f) {
++            Util.Debug("keycode is numpad /");
++            res = true;
++        }
++        return res;
++    }
++
+     // Given a keycode, try to predict which keysym it might be.
+     // If the keycode is unknown, null is returned.
+     function keysymFromKeyCode(keycode, shiftPressed) {
+@@ -527,16 +548,22 @@
+             next(evt);
+             return;
+         }
+-        // undo modifiers
++        Util.Debug("EscapeModifiers: " + (evt.type == 'keydown' ? "down" : "up") + ", keysym: " + evt.keysym.keysym);
++
++        // undo modifiers except for AltGR that is not properly handled by Qemu
+         for (var i = 0; i < evt.escape.length; ++i) {
+-            next({type: 'keyup', keyId: 0, keysym: keysyms.lookup(evt.escape[i])});
++            if (evt.escape[i] !== XK_ISO_Level3_Shift) {
++                next({type: 'keyup', keyId: 0, keysym: keysyms.lookup(evt.escape[i])});
++            }
+         }
+         // send the character event
+         next(evt);
+-        // redo modifiers
++        // redo modifiers except for altGR
+         /* jshint shadow: true */
+         for (var i = 0; i < evt.escape.length; ++i) {
+-            next({type: 'keydown', keyId: 0, keysym: keysyms.lookup(evt.escape[i])});
++            if (evt.escape[i] !== XK_ISO_Level3_Shift) {
++                next({type: 'keydown', keyId: 0, keysym: keysyms.lookup(evt.escape[i])});
++            }
+         }
+         /* jshint shadow: false */
+     };
+diff -Naur ../noVNC-2015_03_02/include/rfb.js ./include/rfb.js
+--- ../noVNC-2015_03_02/include/rfb.js	2015-03-02 09:32:24.000000000 +0100
++++ ./include/rfb.js	2015-03-08 11:08:14.000000000 +0100
+@@ -34,6 +34,7 @@
+ 
+         this._rfb_tightvnc = false;
+         this._rfb_xvp_ver = 0;
++        this._alt_state = "off";
+ 
+         // In preference order
+         this._encodings = [
+@@ -270,6 +271,23 @@
+             this._sock.send(arr);
+         },
+ 
++        sendAltOn: function() {
++            if (this._rfb_state !== "normal" || this._view_only) { return false; }
++            Util.Info("Sending Alt On");
++            var arr = [];
++            arr = arr.concat(RFB.messages.keyEvent(XK_Alt_L, 1)); // Alt
++            this._sock.send(arr);
++            this._alt_state = "on";
++        },
++        sendAltOff: function() {
++            if (this._rfb_state !== "normal" || this._view_only) { return false; }
++            Util.Info("Sending Alt Off");
++            var arr = [];
++            arr = arr.concat(RFB.messages.keyEvent(XK_Alt_L, 0)); // Alt
++            this._sock.send(arr);
++            this._alt_state = "off";
++        },
++
+         xvpOp: function (ver, op) {
+             if (this._rfb_xvp_ver < ver) { return false; }
+             Util.Info("Sending XVP operation " + op + " (version " + ver + ")");
+@@ -1001,11 +1019,11 @@
+             this._sock.send(response);
+ 
+             this._checkEvents();
+-
++            var dis_name = this._fb_name.replace("QEMU", "").replace(")", "").replace("(","");
+             if (this._encrypt) {
+-                this._updateState('normal', 'Connected (encrypted) to: ' + this._fb_name);
++                this._updateState('normal', 'Secure VNC Connection to ' + dis_name);
+             } else {
+-                this._updateState('normal', 'Connected (unencrypted) to: ' + this._fb_name);
++                this._updateState('normal', 'VNC Connection to ' + dis_name);
+             }
+         },
+ 
+diff -Naur ../noVNC-2015_03_02/launch_socket.sh ./launch_socket.sh
+--- ../noVNC-2015_03_02/launch_socket.sh	1970-01-01 01:00:00.000000000 +0100
++++ ./launch_socket.sh	2015-03-02 09:39:48.000000000 +0100
+@@ -0,0 +1,57 @@
++#/bin/sh
++
++OPT=$1
++if [ "$OPT" = "-v" ]; then
++	TARGET=$2
++	VERBOSE="yes"
++
++elif [ "$OPT" = "-h" ]; then
++	echo "./launch_socket.sh IPADDR:VNCPORT"
++	echo "ex: ./launchh_socket.sh 192.168.0.1:0"
++	echo "Options: "
++	echo "  -h: display this message"
++	echo "  -v: enable verbose mode"
++	exit
++else
++	TARGET=$1
++fi
++
++
++if [ -z "$TARGET" ]; then
++	echo "Error: missing target argument"
++	exit -1
++fi
++
++NOCLEAN="0"
++DIR=`echo $0 | sed -e "s/launch_socket.sh//" | sed -e "s/\/$//" 2>/dev/null`
++
++if [ -z "$DIR" ]; then
++	DIR="."
++fi
++
++
++function execute()
++{
++for i in {8700..65000}
++do
++	if [ "$VERBOSE" ]; then
++		echo "trying $i"
++	fi
++	OTHER_USED=`netstat -pant 2>/dev/null | grep ":$i" | grep LISTEN`
++	CERT="/etc/pki/tls/certs/openkvi_server.crt"
++	KEY="/etc/pki/tls/private/openkvi_server.key"
++	if [ -z "$OTHER_USED" ]; then
++		if [ "$VERBOSE" ]; then
++			python $DIR/utils/websockify -D $i $TARGET --cert=$CERT	--key=$KEY
++		else
++			python $DIR/utils/websockify -D $i $TARGET --cert=$CERT --key=$KEY 1>/dev/null 2>&1
++		fi
++
++		PYPID=`netstat -pant 2>/dev/null | grep ":$i .*LISTEN.*" 2>/dev/null | sed -e "s/.* \([0-9]*\)\/python/\1;/" 2>/dev/null | sed -e "s/;.*//" 2>/dev/null`
++		echo "PID=$PYPID;PORT=$i;TARGET=$TARGET"
++		break
++	fi
++done
++}
++
++execute
+diff -Naur ../noVNC-2015_03_02/VERSION ./VERSION
+--- ../noVNC-2015_03_02/VERSION	1970-01-01 01:00:00.000000000 +0100
++++ ./VERSION	2015-03-08 12:40:48.000000000 +0100
+@@ -0,0 +1 @@
++2015-03-02
+diff -Naur ../noVNC-2015_03_02/vnc_auto.html ./vnc_auto.html
+--- ../noVNC-2015_03_02/vnc_auto.html	2015-03-02 09:32:24.000000000 +0100
++++ ./vnc_auto.html	2015-03-09 10:37:43.000000000 +0100
+@@ -35,24 +35,40 @@
+ 
+     <!-- Stylesheets -->
+     <link rel="stylesheet" href="include/base.css" title="plain">
++    <!--
++    <link rel="stylesheet" href="include/base.css" title="plain">
++    -->
+ 
+      <!--
+     <script type='text/javascript'
+         src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script>
+     -->
+-        <script src="include/util.js"></script>
++    <script type="text/javascript" src="../javascript/jquery.min.js"></script>
++    <script type="text/javascript" src="../javascript/jquery-ui.min.js"></script>
++    <link href="../javascript/jquery-ui.min.css" media="all" rel="stylesheet" type="text/css" />
++    <script type="text/javascript" src="include/util.js"></script>
++    <script type="text/javascript" src="../javascript/pnotify.min.js"></script>
++    <link href="../javascript/pnotify.min.css" media="all" rel="stylesheet" type="text/css" />
+ </head>
+ 
+ <body style="margin: 0px;">
+     <div id="noVNC_screen">
+-            <div id="noVNC_status_bar" class="noVNC_status_bar" style="margin-top: 0px;">
++            <div id="noVNC_status_bar" class="openkvi_status_bar" style="margin-top: 0px;">
+                 <table border=0 width="100%"><tr>
++                    <td width="1%"><div id="noVNC_buttons">
++                            <input type="button" id="Altbtn" value=" Alt Off " class="openkvi_status_button"
++                            onmousedown="toggleAltOn(this)" title="Toggle Alt key" 
++                            onmouseup="toggleAltOff(this)" title="Toggle Alt key"
++                            onmouseleave="toggleAltOff(this)" title="Toggle Alt key"/>
++                        </div></td>
+                     <td><div id="noVNC_status" style="position: relative; height: auto;">
+                         Loading
+                     </div></td>
+                     <td width="1%"><div id="noVNC_buttons">
+-                        <input type=button value="Send CtrlAltDel"
+-                            id="sendCtrlAltDelButton">
++                        <input type=button value=" Ctrl+Alt+Del "
++                            id="sendCtrlAltDelButton"
++                            class="openkvi_ctrlaltdel"
++                            title="Send reboot command to the guest OS">
+                         <span id="noVNC_xvp_buttons">
+                         <input type=button value="Shutdown"
+                             id="xvpShutdownButton">
+@@ -111,10 +127,50 @@
+             rfb.sendPassword($D('password_input').value);
+             return false;
+         }
++        function askCtrlAltDel() {
++            PNotify.prototype.options.styling = "jqueryui";
++            (new PNotify({
++                title: '<span style="color: FireBrick;">The sytem will be rebooted</span>',
++                text: 'Do you wish to proceed ?',
++                icon: 'glyphicon glyphicon-question-sign',
++                hide: false,
++                opacity: .9,
++                shadow: true,
++                confirm: {
++                    confirm: true
++                },
++                buttons: {
++                    closer: false,
++                    sticker: false
++                },
++                history: {
++                    history: false
++                }
++            })).get().on('pnotify.confirm', function() {
++                rfb.sendCtrlAltDel();
++            }).on('pnotify.cancel', ''
++            );
++        }
+         function sendCtrlAltDel() {
+             rfb.sendCtrlAltDel();
+             return false;
+         }
++        function toggleAltOn(el) {
++            if ( el.value === " Alt Off " ) {
++                rfb.sendAltOn();
++                el.className = "openkvi_status_button_selected";
++                el.value = " Alt On ";
++                return false;
++            }
++        }
++        function toggleAltOff(el) {
++            if ( el.value === " Alt On " ) {
++                rfb.sendAltOff();
++                el.className = "openkvi_status_button";
++                el.value = " Alt Off ";
++                return false;
++            }
++        }
+         function xvpShutdown() {
+             rfb.xvpShutdown();
+             return false;
+@@ -143,13 +199,16 @@
+ 
+             if (state === "normal") {
+                 cad.disabled = false;
++                var width = $D('noVNC_canvas').width + (window.outerWidth-window.innerWidth+20);
++                var height = $D('noVNC_canvas').height + $D('noVNC_status_bar').clientHeight + (window.outerHeight-window.innerHeight+10);
++                window.resizeTo(width,height);
+             } else {
+                 cad.disabled = true;
+                 xvpInit(0);
+             }
+ 
+             if (typeof(msg) !== 'undefined') {
+-                sb.setAttribute("class", "noVNC_status_" + level);
++                sb.setAttribute("class", "openkvi_status_bar");
+                 s.innerHTML = msg;
+             }
+         }
+@@ -178,13 +237,14 @@
+             var host, port, password, path, token;
+ 
+             $D('sendCtrlAltDelButton').style.display = "inline";
+-            $D('sendCtrlAltDelButton').onclick = sendCtrlAltDel;
++            $D('sendCtrlAltDelButton').onclick = askCtrlAltDel;
+             $D('xvpShutdownButton').onclick = xvpShutdown;
+             $D('xvpRebootButton').onclick = xvpReboot;
+             $D('xvpResetButton').onclick = xvpReset;
+ 
+             WebUtil.init_logging(WebUtil.getQueryVar('logging', 'warn'));
+-            document.title = unescape(WebUtil.getQueryVar('title', 'noVNC'));
++            var vmName = WebUtil.getQueryVar('vmName', null);
++            document.title = unescape(WebUtil.getQueryVar('title', vmName));
+             // By default, use the host and port of server that served this file
+             host = WebUtil.getQueryVar('host', window.location.hostname);
+             port = WebUtil.getQueryVar('port', window.location.port);

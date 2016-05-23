@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <bean scope="singleton" parent="typeManagerBase" class="com.wavemaker.runtime.service.TypeManager" id="typeManager">
+        <property name="types">
+            <map merge="true">
+                <entry key="authenticateUsers">
+                    <list/>
+                </entry>
+                <entry key="authenticationModeTools">
+                    <list/>
+                </entry>
+                <entry key="javaTools">
+                    <list/>
+                </entry>
+                <entry key="openkviDB">
+                    <list>
+                        <value>com.openkvidb.data.Authentication</value>
+                        <value>com.openkvidb.data.Groups</value>
+                        <value>com.openkvidb.data.Nodes</value>
+                        <value>com.openkvidb.data.Users</value>
+                        <value>com.openkvidb.data.Vms</value>
+                    </list>
+                </entry>
+                <entry key="runtimeService">
+                    <list>
+                        <value>com.wavemaker.runtime.service.PagingOptions</value>
+                        <value>com.wavemaker.runtime.service.PropertyOptions</value>
+                    </list>
+                </entry>
+                <entry key="securityService">
+                    <list/>
+                </entry>
+                <entry key="serverTools">
+                    <list/>
+                </entry>
+                <entry key="snapshotTools">
+                    <list/>
+                </entry>
+                <entry key="vmTools">
+                    <list/>
+                </entry>
+                <entry key="vmXmlFile">
+                    <list/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>

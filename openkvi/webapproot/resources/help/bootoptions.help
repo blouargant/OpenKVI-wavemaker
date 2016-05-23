@@ -1,0 +1,6 @@
+<p>
+Toggle a device to enable/disable its booting capability. You can also use up and down arrows to set booting priorities. 
+</p>
+ <dl><dt><code>Show boot menu</code></dt><dd>Once enabled, Boot Menu can be accessed by pressing "F12" at startup.
+Note that this features may not be supported by all hypervisors.
+</dd>

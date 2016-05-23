@@ -1,0 +1,786 @@
+--- ovni.old/services/vmXmlFile/src/vmXmlFile.java	2012-07-10 09:22:07.000000000 +0200
++++ ovni/services/vmXmlFile/src/vmXmlFile.java	2012-07-05 10:39:35.000000000 +0200
+@@ -183,6 +183,7 @@
+         Format xmlFormat = Format.getPrettyFormat();
+         xmlFormat.setOmitDeclaration(true);
+         XMLOutputter sortie = new XMLOutputter(xmlFormat);
++        String deviceRes = "";
+         
+         try {
+             String relPath="resources/data/"+server+"/vm/configs/"+vName+"/"+vName+".xml";
+@@ -378,8 +379,7 @@
+                                     tmpSource.setAttribute(atrFile);
+                                 }
+                                 String deviceXml = sortie.outputString(elDisk);
+-                                String deviceRes = this.updateVmDevice(vName, server, deviceXml);
+-                                result += deviceRes;
++                                deviceRes += "::"+this.updateVmDevice(vName, server, deviceXml);
+                                 
+                             }
+                         }
+@@ -389,7 +389,7 @@
+             
+             sortie.output(document, new FileOutputStream(pathToXml));    
+             String res = this.updateVmDesc(vName, server, pathToXml); 
+-            result += res;
++            result += res + deviceRes;
+             
+         } catch (Exception e) {
+             return result+"Error="+e.toString();
+@@ -404,6 +404,7 @@
+         xmlFormat.setOmitDeclaration(true);
+         XMLOutputter sortie = new XMLOutputter(xmlFormat);
+         sshClient sshc = new sshClient();
++        String deviceRes = "";
+         try {
+             String relPath="resources/data/"+server+"/vm/configs/"+vName+"/"+vName+".xml";
+             String pathToXml = RuntimeAccess.getInstance().getSession().getServletContext().getRealPath(relPath);
+@@ -564,8 +565,7 @@
+                                 elModel.setAttribute(atrModel);
+                                 
+                                 String deviceXml = sortie.outputString(elInterface);
+-                                String deviceRes = this.updateVmDevice(vName, server, deviceXml);
+-                                result += deviceRes;
++                                deviceRes += "::"+this.updateVmDevice(vName, server, deviceXml);
+                                 if (type.equals("bridge") && (!oldSource.equals(source)) && (oldMac.equals(mac))) {
+                                     String cmdOpt = mac+" "+source+" "+oldSource; 
+                                     String migrateRes = sshc.executeBash(ipaddr, "migrate_network.sh", cmdOpt);
+@@ -578,7 +578,7 @@
+             
+             sortie.output(document, new FileOutputStream(pathToXml));    
+             String res = this.updateVmDesc(vName, server, pathToXml); 
+-            result += res;
++            result += res + deviceRes;
+             
+         } catch (Exception e) {
+             return result+"Error="+e.toString();
+@@ -593,7 +593,8 @@
+         xmlFormat.setOmitDeclaration(true);
+         XMLOutputter sortie = new XMLOutputter(xmlFormat);
+         boolean found = false;
+-        
++        String deviceRes = "";
++
+         try {
+             String relPath="resources/data/"+server+"/vm/configs/"+vName+"/"+vName+".xml";
+             String pathToXml = RuntimeAccess.getInstance().getSession().getServletContext().getRealPath(relPath);
+@@ -746,8 +747,7 @@
+                                     
+                                 }
+                                 String deviceXml = sortie.outputString(elGraph);
+-                                String deviceRes = this.updateVmDevice(vName, server, deviceXml);
+-                                result += deviceRes;
++                                deviceRes += "::"+this.updateVmDevice(vName, server, deviceXml);
+                                 
+                             }
+                         }
+@@ -757,7 +757,7 @@
+             
+             sortie.output(document, new FileOutputStream(pathToXml));    
+             String res = this.updateVmDesc(vName, server, pathToXml); 
+-            result += res;
++            result += res + deviceRes;
+             
+         } catch (Exception e) {
+             return result+"{\"action\":{\"result\":\"Error:"+e.toString()+"\"}}";
+@@ -773,7 +773,7 @@
+ 		xmlFormat.setOmitDeclaration(true);
+ 		XMLOutputter sortie = new XMLOutputter(xmlFormat);
+ 		boolean found = false;
+-		
++		String deviceRes = "";
+ 		try {
+ 			String relPath="resources/data/"+server+"/vm/configs/"+vName+"/"+vName+".xml";
+ 			String pathToXml = RuntimeAccess.getInstance().getSession().getServletContext().getRealPath(relPath);
+@@ -840,16 +840,16 @@
+ 								} 
+ 							}
+ 							if (found == true) {
+-							elInput.removeAttribute("type");
+-							Attribute atrType = new Attribute("type", item.get("type").toString());
+-							elInput.setAttribute(atrType);
+-							elInput.removeAttribute("bus");
+-							Attribute atrBus = new Attribute("bus", item.get("bus").toString());
+-							elInput.setAttribute(atrBus);
+-							
+-							String deviceXml = sortie.outputString(elInput);
+-							String deviceRes = this.updateVmDevice(vName, server, deviceXml);
+-							result += deviceRes;
++    							elInput.removeAttribute("type");
++    							Attribute atrType = new Attribute("type", item.get("type").toString());
++    							elInput.setAttribute(atrType);
++    							elInput.removeAttribute("bus");
++    							Attribute atrBus = new Attribute("bus", item.get("bus").toString());
++    							elInput.setAttribute(atrBus);
++    							
++    							String deviceXml = sortie.outputString(elInput);
++    							deviceRes += "::"+this.updateVmDevice(vName, server, deviceXml);
++    							
+ 							
+ 							}
+ 						}
+@@ -859,7 +859,7 @@
+ 			
+ 			sortie.output(document, new FileOutputStream(pathToXml));    
+ 			String res = this.updateVmDesc(vName, server, pathToXml); 
+-			result += res;
++			result += res + deviceRes;
+ 		
+ 		} catch (Exception e) {
+ 			return result+"{\"action\":{\"result\":\"Error:"+e.toString()+"\"}}";
+--- ovni.old/services/vmXmlFile/designtime/servicedef.xml	2012-07-10 09:22:07.000000000 +0200
++++ ovni/services/vmXmlFile/designtime/servicedef.xml	2012-07-05 10:39:39.000000000 +0200
+@@ -49,12 +49,6 @@
+         <parameter isList="false" typeRef="java.lang.String" name="storageActions"/>
+         <return isList="false" typeRef="java.lang.String"/>
+     </operation>
+-    <operation name="updateVmDevice">
+-        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+-        <parameter isList="false" typeRef="java.lang.String" name="node"/>
+-        <parameter isList="false" typeRef="java.lang.String" name="xml"/>
+-        <return isList="false" typeRef="java.lang.String"/>
+-    </operation>
+     <operation name="updateVmInput">
+         <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+         <parameter isList="false" typeRef="java.lang.String" name="server"/>
+@@ -62,6 +56,12 @@
+         <parameter isList="false" typeRef="java.lang.String" name="todo"/>
+         <return isList="false" typeRef="java.lang.String"/>
+     </operation>
++    <operation name="updateVmDevice">
++        <parameter isList="false" typeRef="java.lang.String" name="vName"/>
++        <parameter isList="false" typeRef="java.lang.String" name="node"/>
++        <parameter isList="false" typeRef="java.lang.String" name="xml"/>
++        <return isList="false" typeRef="java.lang.String"/>
++    </operation>
+     <operation name="updateVmMemory">
+         <parameter isList="false" typeRef="java.lang.String" name="vName"/>
+         <parameter isList="false" typeRef="java.lang.String" name="server"/>
+--- ovni.old/webapproot/resources/novnc/vnc_auto.html	2012-07-10 09:22:07.000000000 +0200
++++ ovni/webapproot/resources/novnc/vnc_auto.html	2012-07-10 09:24:47.000000000 +0200
+@@ -24,9 +24,7 @@
+             <div id="noVNC_status_bar" class="noVNC_status_bar" style="margin-top: 0px;">
+                 <table border=0 width="100%"><tr>
+                     <td width="1%"><div id="noVNC_buttons">
+-			<input type="button" id="AltGrbtn" value="AltGr Off" 
+-			onclick = "toggleAltGr(this)"
+-			/>
++			<input type="button" id="AltGrbtn" value="AltGr Off" class="off" onclick = "toggleAltGr(this)"/>
+                         </div></td>
+ 		    <td><div id="noVNC_status">Loading</div></td>
+                     <td width="1%"><div id="noVNC_buttons">
+--- ovni.old/webapproot/resources/novnc/vnc_auto_detached.html	2012-07-10 09:22:07.000000000 +0200
++++ ovni/webapproot/resources/novnc/vnc_auto_detached.html	2012-07-10 09:24:47.000000000 +0200
+@@ -22,16 +22,10 @@
+     <body style="margin: 0px;">
+         <div id="noVNC_screen">
+             <div id="noVNC_status_bar" class="noVNC_status_bar" style="margin-top: 0px;">
+-                <table border=0 width="100%"><tr>
++                <table border=0><tr>
+ 
+                     <td width="1%"><div id="noVNC_buttons">
+-			<input type="button" id="AltGrbtn" value="AltGr Off" class="off" 
+-			onmousedown = "toggleAltGr(this)"
+-			onmouseup   = "toggleAltGr(this)"/>
+-                            </div></td>
+-                    <td width="1%"><div id="noVNC_buttons">
+-                        <input type=button value="Get Focus"
+-                            id="doConnect">
++			<input type="button" id="AltGrbtn" value="AltGr Off" class="off" onclick = "toggleAltGr(this)"
+                             </div></td>
+ 		    <td><div id="noVNC_status">Loading</div></td>
+                     <td width="1%"><div id="noVNC_buttons">
+@@ -40,7 +34,7 @@
+                             </div></td>
+                 </tr></table>
+             </div>
+-            <canvas id="noVNC_canvas" width="640px" height="20px">
++            <canvas id="noVNC_canvas">
+                 Canvas not supported.
+             </canvas>
+         </div>
+@@ -107,12 +101,13 @@
+         }
+ 
+         window.onload = function () {
+-            var host, port, password, path;
++            var host, port, password, path, vmName;
+ 
+             $D('sendCtrlAltDelButton').style.display = "inline";
+             $D('sendCtrlAltDelButton').onclick = sendCtrlAltDel;
+ 
+-            document.title = unescape(WebUtil.getQueryVar('title', 'noVNC'));
++            vmName = WebUtil.getQueryVar('vmName', null);
++            document.title = unescape(WebUtil.getQueryVar('title', vmName));
+             host = WebUtil.getQueryVar('host', null);
+             port = WebUtil.getQueryVar('port', null);
+             password = WebUtil.getQueryVar('password', '');
+@@ -130,9 +125,16 @@
+                            'shared':       WebUtil.getQueryVar('shared', true),
+                            'view_only':    WebUtil.getQueryVar('view_only', false),
+                            'updateState':  updateState,
+-                           'onPasswordRequired':  passwordRequired});
++                           'onPasswordRequired':  passwordRequired,
++                           'onUpdateState': function (rfb, state) {
++                               if (state === 'normal') {
++                                     var width = $D('noVNC_canvas').width + (window.outerWidth-window.innerWidth+5); 
++                                     var height = $D('noVNC_canvas').height + $D('noVNC_status_bar').clientHeight + (window.outerHeight-window.innerHeight+5);
++                                     window.resizeTo(width,height);
++                               }}});
+             rfb.connect(host, port, password, path);
+ 	    rfb.sendAltGrOff();
++
+         };
+         </script>
+ 
+--- ovni.old/webapproot/pages/Main/Main.js	2012-07-10 09:22:07.000000000 +0200
++++ ovni/webapproot/pages/Main/Main.js	2012-07-10 09:24:47.000000000 +0200
+@@ -76,6 +76,17 @@
+         this.labelSessionInfo.setCaption("Your session has expired, please reauthenticate.");
+         this.sessionExpiredDialog.show();
+     },
++    javaMonitorSessionExpirationResult: function(inSender, inDeprecated) {
++        try {
++            var result = this.javaMonitorSessionExpiration.getValue("dataValue");
++            this.sessionExpired();
++//            this.labelSessionInfo.setCaption("Your session has expired, please reauthenticate.");
++//            this.sessionExpiredDialog.show();
++    
++        } catch (e) {
++            console.error('ERROR IN javaMonitorSessionExpirationResult: ' + e);
++        }
++    },
+     btnExitAppClick: function(inSender) {
+         try {
+             this.sessionExpiredDialog.hide();
+@@ -441,6 +452,17 @@
+                     }    
+                     this.vmListByServerLive.update();
+                 }
++                else if (message === "renameVM") {
++                    target = jsonVar.action.result.vm;
++                    owner = jsonVar.action.result.owner;
++                    newName = jsonVar.action.result.newName;
++                    status = "Successful";
++                    task = "Rename Virtual Machine";
++                    var varLabel = "Label" + target;
++                    if (this[varLabel] !== undefined) {
++//                        this[varLabel].setCaption(newName);
++                    }
++                }
+             }
+             
+             if (doUpdate === true) {
+@@ -3881,7 +3903,6 @@
+             this.varVmDeleteOrRemove.setValue("dataValue", "delete");
+             this.vmDeleteLiveVar.update();
+             this.VmPopupMenu.hide();
+-
+         } catch (e) {
+             console.error('ERROR IN labelVmDeleteClick: ' + e);
+         }
+@@ -5598,33 +5619,31 @@
+             
+             var jsonVar = JSON.parse(this.javaGetVmExtendedInfos.getValue("dataValue"));
+             this.varVmInputList.clearData();
+-            var inputCount = jsonVar.domain.devices.input.length;
+-            /*for (var device in jsonVar.domain.devices) {
+-                if (device === "input") { inputCount++; }
+-            }*/
+-            if (inputCount === 1) {
+-                type = jsonVar.domain.devices.input.type;
+-                if (type === "mouse" ) {
+-                    icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-mouse.png" align="middle"/>';
+-                } else {
+-                   icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-tablet.png" align="middle"/>';
+-                }
+-                bus = jsonVar.domain.devices.input.bus;
+-                this.varVmInputList.addItem({"bus": bus, "type": type, "icon": icon});
+-            } else if (inputCount >= 2) {
+-                for (var n=0; n < inputCount; n++) {
+-                    type = jsonVar.domain.devices.input[n].type;
+-                    bus = jsonVar.domain.devices.input[n].bus;
+-                    if (type === "mouse" ) {
+-                        icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-mouse.png" align="middle"/>';
++            if (jsonVar.domain.devices.input) {
++                if (typeof(jsonVar.domain.devices.input.type) === "string") { // only one input
++                    type = jsonVar.domain.devices.input.type;
++                    if (type === "mouse") {
++                       icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-mouse.png" align="middle"/>';
+                     } else {
+-                        icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-tablet.png" align="middle"/>';
++                       icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-tablet.png" align="middle"/>';
+                     }
++                    bus = jsonVar.domain.devices.input.bus;
+                     this.varVmInputList.addItem({"bus": bus, "type": type, "icon": icon});
++                } else {
++                    for (var n = 0 ; n < jsonVar.domain.devices.input.length ; n++) {
++                        type = jsonVar.domain.devices.input[n].type;
++                        bus = jsonVar.domain.devices.input[n].bus;
++                        if (type === "mouse" ) {
++                            icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-mouse.png" align="middle"/>';
++                        } else {
++                            icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-tablet.png" align="middle"/>';
++                        }
++                        this.varVmInputList.addItem({"bus": bus, "type": type, "icon": icon});
++                    }
+                 }
+             }
+-            
+-            
++            this.varVmConfigUpdate.clearData();
++
+         } catch (e) {
+             this.showToastError("getVmInputsInfo ERROR: " + e.toString());
+             console.error('ERROR IN getVmInputsInfo: ' + e);
+@@ -5798,7 +5817,7 @@
+             this.vmConfigSave.setDisabled(true);
+     
+         } catch (e) {
+-            this.showToastError("onINputFiledChange ERROR: " + e.toString());
++            this.showToastError("vmConfigSaveClick ERROR: " + e.toString());
+             console.error('ERROR IN vmConfigSaveClick: ' + e);
+         }
+     },
+@@ -5811,6 +5830,7 @@
+             var vName = args[1];
+             var sName = args[2];
+             var json = args[3];
++            this.logDebugVM("json:"+json);
+             if (result.indexOf("Error") === -1) {
+                 var varIP = sName + "ip";
+                 var sIP = this[varIP].getValue("dataValue");
+@@ -7304,8 +7324,8 @@
+             if (port.indexOf("none") > -1) {
+                 this.showToastError("No vnc display available");
+             } else {
+-                var uri = location + "/resources/novnc/vnc_auto_detached.html?host=" + hostname + "&port=" + port;
+-                window.open(uri, '', 'scrollbars=yes,menubar=no,height=600,width=800,resizable=yes,toolbar=no,location=no,status=no');
++                var uri = location + "/resources/novnc/vnc_auto_detached.html?host=" + hostname + "&port=" + port + "&vmName=" + vName;
++                window.open(uri, "", 'scrollbars=yes,menubar=no,height=400,width=600,resizable=yes,toolbar=no,location=no,status=no');
+             }
+ 
+ 
+@@ -7654,16 +7674,100 @@
+ /// tests    
+ 
+ 
+-    javaMonitorSessionExpirationResult: function(inSender, inDeprecated) {
+-        try {
+-            var result = this.javaMonitorSessionExpiration.getValue("dataValue");
+-            this.labelSessionInfo.setCaption("Your session has expired, please reauthenticate.");
+-            this.sessionExpiredDialog.show();
+-    
+-        } catch (e) {
+-            console.error('ERROR IN javaMonitorSessionExpirationResult: ' + e);
++
++
++  btnRenameVmSaveClick: function(inSender) {
++	  try {
++          var currentName = this.varSelectedVm.getValue("dataValue");
++          var newName = this.renameVmName.getValue("dataValue");
++          
++          var badName = false;
++          var vmCount = this.tablevmsLiveVariable2.getCount();
++          for (var j = 0; j < vmCount; j++) {
++              var vmInfo = this.tablevmsLiveVariable2.getItem(j);
++              var vm = vmInfo.getValue("name");
++              if (vm === newName && newName !== currentName) {
++                  badName = true;
++              }
++          }
++          if (badName) {
++              app.toastDialog.showToast("Name already exists", 5000, "Warning", "cc", "");
++          }
++          else {
++              var sName = this.varSelectedServer.getValue("dataValue");
++              this.renameVmDialog.hide();
++              this.addLog("Rename Virtual Machine", currentName, sName);
++     
++    //        var myId=this.vmRenameLiveVar.getValue("id");
++    //          this.vmRenameLiveVar.clearData();
++              this.vmLiveVar.setOperation("update");
++              this.vmLiveVar.sourceData.setData({id: this.vmLiveVar.getValue("id"), name: newName});
++    //          this.vmRenameLiveVar.sourceData.setValue("name", newName);    
++              this.vmLiveVar.update();
++
++                /* autre solution
++                var item = this.vmRenameLiveVar.getItem(0);
++                app.alert("item =>"+item.getValue("name"));
++                
++                this.vmRenameLiveVar.getItem(0).setValue("name", newName); 
++                app.alert("newName =>"+this.vmRenameLiveVar.getItem(0).getValue("name"));
++                this.tablevmsLiveForm2.setDataSet(this.vmRenameLiveVar.getItem(0));
++                
++                this.tablevmsLiveForm2.updateData();
++                */
++          }
++	  } catch(e) {
++		  console.error('ERROR IN btnRenameVmSaveClick: ' + e); 
++          this.showToastError(this.name + "ERROR IN btnRenameVmSaveClick: " + e.toString());
++	  } 
++  },
++  labelVmRenameClick: function(inSender, inEvent) {
++	  try {
++            this.VmPopupMenu.hide();     
++            this.vmLiveVar.clearData();
++            this.vmLiveVar.setOperation("read");   
++            //this.vmLiveVar.filter.setData({name: this.varSelectedVm.getValue("dataValue"), server: this.varSelectedServer.getValue("dataValue")});
++            this.vmLiveVar.update();   	  
++	  } catch(e) {
++		  console.error('ERROR IN labelVmRenameClick: ' + e); 
++	  } 
++  },
++vmLiveVarResult: function(inSender, inDeprecated) {
++    try {
++        var user = this.templateUsernameVar.getValue("dataValue");
++        var sName = this.varSelectedServer.getValue("dataValue");
++        var vName;
++        var str;
++        var request;
++        var bNotifyAll=false;
++
++        if (this.vmLiveVar.operation === "read") {
++            vName = this.vmLiveVar.getValue("name");
++            this.renameVmName.setValue("dataValue", vName);
++            this.renameVmDialog.show();
++        } else if (this.vmLiveVar.operation === "update") {
++            request = "renameVM";
++            vName = this.varSelectedVm.getValue("dataValue");
++            var newName = this.vmLiveVar.getValue("name");
++            str = JSON.stringify({
++                "vm": vName,
++                "owner": user,
++                "newName": newName
++            });
++            bNotifyAll=true;
+         }
+-    },
++
++        if (bNotifyAll) {
++            this.javaNotifyAll.input.setValue("node", sName);
++            this.javaNotifyAll.input.setValue("request", request);
++            this.javaNotifyAll.input.setValue("infos", str);
++            this.javaNotifyAll.update();
++        }
++    } catch (e) {
++        console.error('ERROR IN vmLiveVarResult: ' + e);
++    }
++},
++
+   newVmInputBtnClick: function(inSender) {
+     try {
+ 		this.selectInputType.setReadonly(false);
+@@ -7676,69 +7780,163 @@
+ 		console.error('ERROR IN newVmInputBtnClick: ' + e);
+ 	}
+   },
+-  vmInputBtnSaveClick: function(inSender) {
+-    try {
+-		var action = "";
+-		var item = "";
+-		var oldItem = "";
+-		var type = "input";
+-		var inputType = this.selectInputType.getDataValue();
+-		var bus = this.selectInputBus.getDataValue();
+-		var icon = "";
+-		var tmpvar = {};
+-		var index = 0;
+-
+-		index = this.gridVmInputs.getRowCount() + 1;
+-		jsonItem = {
+-			"type": inputType,
+-			"bus": bus
+-		};
+-		item = JSON.stringify(jsonItem);
+-	
+-		if (inputType === "mouse") {
+-			icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-mouse.png" align="middle"/>';
+-		} else if (inputType === "tablet") {
+-			icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-tablet.png" align="middle"/>';
+-		}
+-		if (this.vmInputDialog.title === "New input device") {
+-			action = "add";
+-			tmpvar = {
+-				"icon": icon,
+-				"type": "<B>"+inputType+"</B>",
+-				"bus": "<B>"+bus+"</B>"
+-			};
+-			this.varVmInputList.addItem(tmpvar);
+-		} else {
+-			action = "update";   
+-			index = this.gridVmInputs.getSelectedIndex();
++    updateVmInputBtnClick: function(inSender) {
++		try {
++			this.selectInputType.setReadonly(true);
++
++			var index = this.gridVmInputs.getSelectedIndex();
+ 			var data = this.gridVmInputs.getRow(index);
+-			jsonOldItem = {
++			var dialogTitle = "Update input device";
++
++			if (data.icon.indexOf("-add.png") > -1) {
++				data.type = data.type.replace(/<\/B>/g, "");
++				data.type = data.type.replace(/<B>/g, "");
++				data.bus = data.bus.replace(/<\/B>/g, "");
++				data.bus = data.bus.replace(/<B>/g, "");
++				this.varVmInputList.removeItem(index);
++				dialogTitle = "New input device";
++			} else if (data.icon.indexOf("-update.png") > -1) {
++				app.toastDialog.showToast("Cannot update a component set to be updated", 10000, "Warning", "cc", "This operation is not allowed");
++				return;                    
++			} else if (data.icon.indexOf("-remove.png") > -1) {
++				app.toastDialog.showToast("Cannot update a component set to be removed", 10000, "Warning", "cc", "This operation is not allowed");
++				return;
++			}
++
++			this.selectInputType.setDataValue(data.type);
++			this.selectInputBus.setDataValue(data.bus);
++
++			this.vmInputDialog.setTitle(dialogTitle);
++			this.vmInputDialog.show();
++
++		} catch (e) {
++			this.showToastError("updateVmInputBtnClick Error: " + e.toString());
++			console.error('ERROR IN updateVmInputBtnClick: ' + e);
++		}
++    },
++    vmInputBtnSaveClick: function(inSender) {
++        try {
++            var action = "";
++            var item = "";
++            var oldItem = "";
++            var type = "input";
++            var inputType = this.selectInputType.getDataValue();
++            var bus = this.selectInputBus.getDataValue();
++            var icon = "";
++            var tmpvar = {};
++            var index = 0;
++    
++            index = this.gridVmInputs.getRowCount() + 1;
++            jsonItem = {
++                "type": inputType,
++                "bus": bus
++            };
++            item = JSON.stringify(jsonItem);
++    
++            if (this.vmInputDialog.title === "New input device") {
++                if (inputType === "mouse") {
++                    icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-mouse-add.png" align="middle"/>';
++                } else if (inputType === "tablet") {
++                    icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-tablet-add.png" align="middle"/>';
++                }
++                action = "add";
++                tmpvar = {
++                    "icon": icon,
++                    "type": "<B>" + inputType + "</B>",
++                    "bus": "<B>" + bus + "</B>"
++                };
++                this.varVmInputList.addItem(tmpvar);
++            } else {
++                if (inputType === "mouse") {
++                    icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-mouse-update.png" align="middle"/>';
++                } else if (inputType === "tablet") {
++                    icon = '<image style="height: 30px;" src="resources/images/icons/hardware/input-tablet-update.png" align="middle"/>';
++                }
++                action = "update";
++                index = this.gridVmInputs.getSelectedIndex();
++                var data = this.gridVmInputs.getRow(index);
++                jsonOldItem = {
++                    "type": data.type,
++                    "bus": data.bus
++                };
++                oldItem = JSON.stringify(jsonOldItem);
++    
++                tmpvar = {
++                    "icon": icon,
++                    "type": "<B>" + inputType + "</B>",
++                    "bus": "<B>" + bus + "</B>"
++                };
++                this.varVmInputList.setItem(index, tmpvar);
++            }
++            this.varVmConfigUpdate.addItem({
++                "action": action,
++                "index": index,
++                "type": type,
++                "item": item,
++                "olditem": oldItem
++            });
++            this.vmConfigSave.setDisabled(false);
++            this.vmInputDialog.hide();
++    
++        } catch (e) {
++            this.showToastError("vmInputBtnSaveClick Error: " + e.toString());
++            console.error('ERROR IN vmInputBtnSaveClick: ' + e);
++        }
++    },
++    removeVmInputBtnClick: function(inSender) {
++		try {
++			this.vmConfigSave.setDisabled(false);
++			
++			var index = this.gridVmInputs.getSelectedIndex();
++			var data = this.gridVmInputs.getRow(index);           
++			var heads = 0;
++			
++			if (data.icon.indexOf("-add.png") > -1) {
++				for (var i = 0; i < this.varVmConfigUpdate.getCount(); i++) { 
++					actionItem = this.varVmConfigUpdate.getItem(i);
++					if (actionItem.index === index) {
++						this.varVmConfigUpdate.removeItem(i);
++					}
++				}
++				this.varVmInputList.removeItem(index);
++				heads = this.headNumber.getDataValue();
++				heads = heads - 1;
++				if (heads < 0) {
++					heads = 1;
++				}
++				this.headNumber.setDataValue(heads);
++				return;
++			} if (data.icon.indexOf("-update.png") > -1) {
++				app.toastDialog.showToast("Cannot Remove a component set to be updated", 10000, "Warning", "cc", "This operation is not allowed");
++				return;                    
++			} else if (data.icon.indexOf("-remove.png") > -1) {
++				app.toastDialog.showToast("Component is already set to be removed", 10000, "Warning", "cc", "This operation is not allowed");
++				return;
++			}
++			
++			var jsonItem = {
+ 				"type": data.type,
+-				"bus": data.bus 
+-			};
+-			oldItem = JSON.stringify(jsonOldItem);
++				"bus": data.bus
++			}; 
++			var item = JSON.stringify(jsonItem);
++			var oldItem = "";
++			this.varVmConfigUpdate.addItem({"action": "remove",
++				"index": index,
++				"type": "input",
++				"item": item,
++				"olditem": oldItem
++			});
+ 			
+-			tmpvar = {
+-				"icon": icon,
+-				"type": "<B>"+inputType+"</B>",
+-				"bus": "<B>"+bus+"</B>"
++			icon = '<image style="height: 30px;" src="resources/images/icons/hardware/vnc-remove.png" align="middle"/>';
++			tmpvar = {"icon": icon,
++				"type": "<B>"+data.type+"</B>",
++				"bus": "<B>"+data.bus+"</B>"
+ 			};
+ 			this.varVmInputList.setItem(index, tmpvar);
++		
++		} catch (e) {
++			console.error('ERROR IN removeVmInputBtnClick: ' + e);
+ 		}
+-		this.varVmConfigUpdate.addItem({
+-			"action": action,
+-			"index": index,
+-			"type": type,
+-			"item": item,
+-			"olditem": oldItem
+-		});
+-		this.vmConfigSave.setDisabled(false);
+-		this.vmInputDialog.hide();
+-	
+-	} catch (e) {
+-		this.showToastError("vmInputBtnSaveClick Error: " + e.toString());
+-		console.error('ERROR IN vmInputBtnSaveClick: ' + e);
+-	}
+-  },
++	},
+   _end: 0
+ });
+\ No newline at end of file
+--- ovni.old/webapproot/pages/Main/Main.widgets.js	2012-07-10 09:22:07.000000000 +0200
++++ ovni/webapproot/pages/Main/Main.widgets.js	2012-07-10 09:24:47.000000000 +0200
+@@ -242,6 +242,15 @@
+ 	javaGetRunningOs: ["wm.ServiceVariable", {"operation":"getRunningOs","service":"serverTools"}, {"onResult":"javaGetRunningOsResult"}, {
+ 		input: ["wm.ServiceInput", {"type":"getRunningOsInputs"}, {}]
+ 	}],
++	varVmDeleteOrRemove: ["wm.Variable", {"type":"StringData"}, {}],
++	javaMonitorSessionExpiration: ["wm.ServiceVariable", {"operation":"monitorSessionExpiration","service":"javaTools"}, {"onResult":"javaMonitorSessionExpirationResult"}, {
++		input: ["wm.ServiceInput", {"type":"monitorSessionExpirationInputs"}, {}]
++	}],
++	varInputTypes: ["wm.Variable", {"isList":true,"json":"[{\"name\":\"Mouse\",\"dataValue\":\"mouse\"},{\"name\":\"Tablet\",\"dataValue\":\"tablet\"}]","type":"EntryData"}, {}],
++	varInputBuses: ["wm.Variable", {"isList":true,"json":"[{\"name\":\"PS2\",\"dataValue\":\"ps2\"},{\"name\":\"USB\",\"dataValue\":\"usb\"}]","type":"EntryData"}, {}],
++	javaUpdateVmInput: ["wm.ServiceVariable", {"operation":"updateVmInput","service":"vmXmlFile"}, {"onResult":"onJavaUpdateVmConfigResult"}, {
++		input: ["wm.ServiceInput", {"type":"updateVmInputInputs"}, {}]
++	}],
+ 	tableserversDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget","height":"365px","title":"Add Node","width":"400px"}, {"onEnterKeyPress":"onNumberEnterKeyPress","onShow":"tableserversDialogShow"}, {
+ 		containerWidget: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","margin":"0","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
+ 			panel42: ["wm.Panel", {"height":"100%","horizontalAlign":"left","verticalAlign":"middle","width":"100%"}, {}, {
+@@ -581,7 +590,7 @@
+ 			picture6: ["wm.Picture", {"border":"0","height":"22px","source":"resources/images/icons/loading.gif","width":"31px"}, {}]
+ 		}]
+ 	}],
+-	VmPopupMenu: ["wm.DesignableDialog", {"_classes":{"domNode":["wm_BorderShadow_StrongShadow","wm_BorderTopStyle_Curved8px","wm_BorderBottomStyle_Curved8px","wm_BackgroundColor_Graphite"]},"borderColor":"#5a697c","buttonBarId":"","containerWidgetId":"panel80","corner":"bc","footerBorder":"0,0,0,0","height":"260px","modal":false,"noMaxify":true,"noMinify":true,"title":"Menu","titlebarBorder":"0,0,0,0","titlebarHeight":"0","width":"185px"}, {"onShow":"onPopupDialogShow"}, {
++	VmPopupMenu: ["wm.DesignableDialog", {"_classes":{"domNode":["wm_BorderShadow_StrongShadow","wm_BorderTopStyle_Curved8px","wm_BorderBottomStyle_Curved8px","wm_BackgroundColor_Graphite"]},"borderColor":"#5a697c","buttonBarId":"","containerWidgetId":"panel80","corner":"bc","footerBorder":"0,0,0,0","height":"300px","modal":false,"noMaxify":true,"noMinify":true,"title":"Menu","titlebarBorder":"0,0,0,0","titlebarHeight":"0","width":"185px"}, {"onShow":"onPopupDialogShow"}, {
+ 		panel80: ["wm.Panel", {"border":"0","height":"100%","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
+ 			panel81: ["wm.Panel", {"border":"0","height":"100%","horizontalAlign":"left","margin":"5","verticalAlign":"top","width":"100%"}, {}, {
+ 				panelVmStart: ["wm.Panel", {"border":"0","height":"34px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"2","verticalAlign":"middle","width":"100%"}, {}, {
+@@ -626,6 +635,13 @@
+ 					labelVmRemoveFromInventory: ["wm.Label", {"_classes":{"domNode":["wm_Mouse_pointer"]},"border":"0","caption":"Remove From Inventory","margin":"0,0,0,4","padding":"4","width":"100%"}, {"onMouseOut":"onLabelMouseOut","onMouseOver":"onLabelMouseOver","onclick":"labelVmRemoveFromInventoryClick"}, {
+ 						format: ["wm.DataFormatter", {}, {}]
+ 					}]
++				}],
++				spacer50: ["wm.Spacer", {"height":"3px","width":"100%"}, {}],
++				panelVmRename: ["wm.Panel", {"border":"1,0,0,0","height":"34px","horizontalAlign":"left","layoutKind":"left-to-right","padding":"2","verticalAlign":"middle","width":"100%"}, {}, {
++					pictureVmRename: ["wm.Picture", {"border":"0","height":"20px","source":"resources/images/icons/actions/document-edit-16.png","width":"20px"}, {}],
++					labelVmRename: ["wm.Label", {"_classes":{"domNode":["wm_Mouse_pointer"]},"border":"0","caption":"Rename","margin":"0,0,0,4","padding":"4","width":"100%"}, {"onMouseOut":"onLabelMouseOut","onMouseOver":"onLabelMouseOver","onclick":"labelVmRenameClick"}, {
++						format: ["wm.DataFormatter", {}, {}]
++					}]
+ 				}]
+ 			}]
+ 		}]
+@@ -1030,10 +1046,6 @@
+ 			wire1: ["wm.Wire", {"expression":undefined,"source":"layerVmScreen","targetProperty":"widgetToCover"}, {}]
+ 		}]
+ 	}],
+-	varVmDeleteOrRemove: ["wm.Variable", {"type":"StringData"}, {}],
+-	javaMonitorSessionExpiration: ["wm.ServiceVariable", {"operation":"monitorSessionExpiration","service":"javaTools"}, {"onResult":"javaMonitorSessionExpirationResult"}, {
+-		input: ["wm.ServiceInput", {"type":"monitorSessionExpirationInputs"}, {}]
+-	}],
+ 	vmInputDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBar","containerWidgetId":"containerWidget7","height":"150px","title":"New input device","width":"300px"}, {}, {
+ 		containerWidget7: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","margin":"0","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
+ 			panelVmInput: ["wm.MainContentPanel", {"border":"0,1,0,1","borderColor":"#333333","height":"100%","horizontalAlign":"left","margin":"0,10,0,10","padding":"0","verticalAlign":"middle","width":"100%"}, {}, {
+@@ -1061,10 +1073,22 @@
+ 			}]
+ 		}]
+ 	}],
+-	varInputTypes: ["wm.Variable", {"isList":true,"json":"[{\"name\":\"Mouse\",\"dataValue\":\"mouse\"},{\"name\":\"Tablet\",\"dataValue\":\"tablet\"}]","type":"EntryData"}, {}],
+-	varInputBuses: ["wm.Variable", {"isList":true,"json":"[{\"name\":\"PS2\",\"dataValue\":\"ps2\"},{\"name\":\"USB\",\"dataValue\":\"usb\"}]","type":"EntryData"}, {}],
+-	javaUpdateVmInput: ["wm.ServiceVariable", {"operation":"updateVmInput","service":"vmXmlFile"}, {}, {
+-		input: ["wm.ServiceInput", {"type":"updateVmInputInputs"}, {}]
++	renameVmDialog: ["wm.DesignableDialog", {"buttonBarId":"buttonBarRenameVm","containerWidgetId":"containerWidgetRenameVm","height":"120px","title":"Rename Virtual Machine","width":"300px"}, {}, {
++		containerWidgetRenameVm: ["wm.Container", {"_classes":{"domNode":["wmdialogcontainer","MainContent"]},"autoScroll":true,"height":"100%","horizontalAlign":"left","margin":"0","padding":"5","verticalAlign":"top","width":"100%"}, {}, {
++			panelRenameVm: ["wm.Panel", {"border":"0","height":"40px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"middle","width":"100%"}, {}, {
++				renameVmName: ["wm.Text", {"caption":"Name:","captionSize":"80px","dataValue":undefined,"displayValue":"","invalidMessage":"name already exists","required":true,"width":"250px"}, {"onchange":"nameVmChange"}]
++			}]
++		}],
++		buttonBarRenameVm: ["wm.Panel", {"_classes":{"domNode":["dialogfooter"]},"border":"1,0,0,0","borderColor":"#333333","height":"32px","horizontalAlign":"right","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
++			btnRenameVmSave: ["wm.Button", {"caption":"Save","imageIndex":88,"imageList":"app.silkIconList","margin":"4"}, {"onclick":"btnRenameVmSaveClick"}],
++			btnRenameVmCancel: ["wm.Button", {"caption":"Cancel","margin":"4"}, {"onclick":"renameVmDialog.hide"}]
++		}]
++	}],
++	vmLiveVar: ["wm.LiveVariable", {"autoUpdate":false,"liveSource":"com.ovnidb.data.Vms","startUpdate":false}, {"onResult":"vmLiveVarResult"}, {
++		binding: ["wm.Binding", {}, {}, {
++			wire: ["wm.Wire", {"expression":undefined,"source":"varSelectedVm.dataValue","targetProperty":"filter.name"}, {}],
++			wire1: ["wm.Wire", {"expression":undefined,"source":"varSelectedServer.dataValue","targetProperty":"filter.server"}, {}]
++		}]
+ 	}],
+ 	layoutBox1: ["wm.Layout", {"_classes":{"domNode":["wm_BackgroundColor_White","wm_BorderShadow_WeakShadow"]},"height":"100%","horizontalAlign":"center","verticalAlign":"top","width":"100%"}, {"onRightClick":"layoutBox1RightClick"}, {
+ 		panelHeader: ["wm.Panel", {"border":"0","height":"74px","horizontalAlign":"center","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
+@@ -1663,8 +1687,8 @@
+ 																}],
+ 																panel43: ["wm.Panel", {"border":"0","height":"48px","horizontalAlign":"left","layoutKind":"left-to-right","verticalAlign":"top","width":"100%"}, {}, {
+ 																	newVmInputBtn: ["wm.Button", {"caption":"New","hint":"Add an input device","margin":"4"}, {"onclick":"newVmInputBtnClick"}],
+-																	updateVmInputBtn: ["wm.Button", {"caption":"Update","hint":"Update input device information","margin":"4"}, {}],
+-																	removeVmInputBtn: ["wm.Button", {"caption":"Remove","hint":"Remove from inventory","margin":"4"}, {}]
++																	updateVmInputBtn: ["wm.Button", {"caption":"Update","hint":"Update input device information","margin":"4"}, {"onclick":"updateVmInputBtnClick"}],
++																	removeVmInputBtn: ["wm.Button", {"caption":"Remove","hint":"Remove from inventory","margin":"4"}, {"onclick":"removeVmInputBtnClick"}]
+ 																}]
+ 															}]
+ 														}],

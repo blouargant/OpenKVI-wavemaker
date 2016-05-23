@@ -1,0 +1,100 @@
+{
+	"methods": [{
+		"name": "createSnapshot",
+		"operationType": null,
+		"parameters": [{
+			"name": "vmName",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}, {
+			"name": "xml",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "discardAll",
+		"operationType": null,
+		"parameters": [{
+			"name": "vmName",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}, {
+			"name": "snapshot",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "getSnapshotList",
+		"operationType": null,
+		"parameters": [{
+			"name": "vmName",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "mergeToChildren",
+		"operationType": null,
+		"parameters": [{
+			"name": "vmName",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}, {
+			"name": "snapshot",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "mergeToParent",
+		"operationType": null,
+		"parameters": [{
+			"name": "vmName",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}, {
+			"name": "snapshot",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "revert",
+		"operationType": null,
+		"parameters": [{
+			"name": "vmName",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}, {
+			"name": "snapshot",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}, {
+		"name": "rollback",
+		"operationType": null,
+		"parameters": [{
+			"name": "vmName",
+			"type": "java.lang.String"
+		}, {
+			"name": "server",
+			"type": "java.lang.String"
+		}, {
+			"name": "snapshot",
+			"type": "java.lang.String"
+		}],
+		"returnType": "java.lang.String"
+	}],
+	"serviceType": "JSON-RPC",
+	"serviceURL": "snapshotTools.json"
+}

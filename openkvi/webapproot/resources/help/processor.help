@@ -1,0 +1,4 @@
+<p>
+Set the number a virtual processors for a Virtual Machine.</br>
+<b>Note that the over-allocation of CPU resources will result in decreased performance.</b>
+</p>

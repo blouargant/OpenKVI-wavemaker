@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="resources/help/user_guide/help.custom.css" media="all" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div class="help_doc">
+		<div class="head">
+			<p class="head_title_1" align="center"><b>OpenKVI</b></p>
+			<p class="head_title_2" align="center">User Manual</p>
+		</div>
+		</br>
+		<p class="section">Table of Contents</p>
+		<div style="margin-left: 25px">
+			<p><a href="#_Toc_100">1. Introduction</a></p>
+			<div style="margin-left: 25px">
+				<p>
+				<a href="#_Toc_110">1.1 Logging In</a>
+				</p>
+				<p>
+				<a href="#_Toc_120">1.2 Interface Overview</a>
+				</p>
+			</div>
+			<p>
+			<a href="#_Toc_200">2. KVM Node Management</a>
+			</p>
+			<div style="margin-left: 25px">
+				<p>
+				<a href="#_Toc_210">2.1 Adding a Node</a>
+				</p>
+				<p>
+				<a href="#_Toc_220">2.2 Deleting a node</a>
+				</p>
+				<p>
+				<a href="#_Toc_230">2.3 Accessing Node Information</a>
+				</p>
+				<p>
+				<a href="#_Toc_240">2.4 Configuring a KVM Node</a>
+				</p>
+				<div style="margin-left: 25px">
+					<a href="#_Toc_241">2.4.1 Network Configuration</a>
+					</p>
+					<div style="margin-left: 25px">
+						<p>
+						<a href="#_Toc_2411">2.4.1.1 Node Networking</a>
+						</p>
+						<p>
+						<a href="#_Toc_2412">2.4.1.2 Virtual Networks</a>
+						</p>
+						<p>
+						<a href="#_Toc_2413">2.4.1.3 Virtual NIC migration</a>
+						</p>
+					</div>
+					<p>
+					<a href="#_Toc_242">2.4.2 Time Settings</a>
+					</p>
+					<p>
+					<p>
+					<a href="#_Toc_243">2.4.3 Hardware Events</a>
+					</p>
+				</div>
+				<p>
+				<a href="#_Toc_250">2.5 SSH Console</a>
+				</p>
+				<p>
+				<a href="#_Toc_260">2.6 Performance monitoring</a>
+				</p>
+				<p>
+				<a href="#_Toc_270">2.7 System logs</a>
+				</p>
+			</div>
+			<p>
+			<a href="#_Toc_300">3. Virtual Machine Management</a>
+			</p>
+			<div style="margin-left: 25px">
+				<p>
+				<a href="#_Toc_310">3.1 Adding a Virtual Machine</a>
+				</p>
+				<p>
+				<a href="#_Toc_320">3.2 Other Virtual Machine Tasks</a>
+				</p>
+				<p>
+				<a href="#_Toc_330">3.3 Accessing Virtual Machine Information</a>
+				</p>
+				<p>
+				<a href="#_Toc_340">3.4 Using the Virtual Machine Screen</a>
+				</p>
+				<p>
+				<a href="#_Toc_350">3.5 Snapshot Management</a>
+				</p>
+				<div style="margin-left: 25px">
+					<p>
+					<a href="#_Toc_351">3.5.1 Taking a Snapshot</a>
+					</p>
+					<p>
+					<a href="#_Toc_352">3.5.2 Rollbacking a Snapshot</a>
+					</p>
+					<p>
+					<a href="#_Toc_353">3.5.3 Saving a Snapshot</a>
+					</p>
+					<p>
+					<a href="#_Toc_354">3.5.4 Advanced Snapshot usages</a>
+					</p>
+				</div>
+			</div>
+			<p>
+			<a href="#_Toc_400">4. Global Configuration</a>
+			</p>
+			<div style="margin-left: 25px">
+				<p>
+				<a href="#_Toc_410">4.1 Roles</a>
+				</p>
+				<p>
+				<a href="#_Toc_420">4.2 User Management</a>
+				</p>
+				<p>
+				<a href="#_Toc_430">4.3 Authentication Modes</a>
+				<div style="margin-left: 25px">
+					<p>
+					<a href="#_Toc_431">4.3.1 Local SQL database</a>
+					</p>
+					<p>
+					<a href="#_Toc_432">4.3.2 LDAP Authentication</a>
+					</p>
+					<p>
+					<a href="#_Toc_433">4.3.3 Active Directory Authentication</a>
+					</p>
+				</div>
+				<p>
+				<a href="#_Toc_440">4.4 Security Level</a>
+				</p>
+				</p>
+			</div>
+		</div>
+		</br>
+		<div>
+		<h1>
+			<a name="_Toc_100">1. Introduction</a>
+		</h1>
+			<div style="margin-left: 25px">
+				<p>
+				OpenKVI is a web-application allowing dynamic control over KVM servers and Virtual Machines. It aims to allow system administrators to quickly perform common tasks.</br>
+				</p>
+					<p class="note">
+						<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+						If you haven't installed an OpenKVI VM along with the KVM server, you can create it with the following procedure:</br>
+						1) Enable OpenKVI virtual machine: ncxctl kvm.openkvi --set enable </br>
+						2) Set it's access bridge: ncxctl openkvi.access.bridge --set <i>br_name</i></br>
+						3) And it's access mode: ncxctl openkvi.access.mode --set <i>[nat/direct]</i> (nat is recommanded)</br>
+						4) Copy the KVM iso file on the KVM server.</br>
+						5) Then you can start OpenKVI creation with ncxctl openkvi.vm --create <i>/path/to/kvm/iso</i></br>
+					</p>
+				<h2>
+					<a name="_Toc_110">1.1 Logging In</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						The following procedure describes how to log in to OpenKVI.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						Enter the address of the machine on which OpenKVI is installed
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_001"><i>Login Screen</i></a></br>
+						<img src="resources/help/user_guide/images/login_in.png"  style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Provide the correct Username and associated password (the default is admin/admin)
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						Click on Login
+					</p>
+					<p>
+						You are now logged in and ready to use OpenKVI.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_002"><i>OpenKVI Main Screen</i></a></br>
+						<img src="resources/help/user_guide/images/main_screen.png" style="max-width: 600px;"/>
+					</p>
+				</div>
+				<h2>
+					<a name="_Toc_120">1.2 Interface Overview</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+					The application is composed of three main parts:
+					<p>
+						<img src="resources/help/user_guide/images/main_screen_overview.png" style="max-width: 600px;"/>
+					</p>
+					<ol>
+						<li class="a">The <em>Data Center panel</em> on the left, that list all managed KVM nodes and Virtual Machines.</br>
+						The top most item in the list give access to OpenKVI global information and configuration; it will be referenced as the <strong>DataCenter</strong> further in this document.
+						</li>
+						<li class="a">The <em>Contextual Control panel</em> on the right, that give control over the item selected in the left panel.</br>
+						Therefore available controls will differ depending on the nature (DataCenter, KVM node or VM) of the selected item.
+						</li>
+						<li class="a">The <em>Task List</em> at the bottom, that display the list of ongoing and finished tasks.</li>
+					</ol>
+					<p class="note">
+						<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+						<i>Tool Bar &#8614; View &#8614; Switch to compact view</i></br>
+						This mode removes all non-essential elements to maximize the space for important components, allowing for small screen users, such as laptops, to have a better user experience.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div>
+		</br>
+		</br>
+		<h1>
+			<a name="_Toc_200">2. KVM Node Management</a>
+		</h1>
+			<div style="margin-left: 25px">
+				<p>
+					This section outlines tasks related to KVM Node Management.
+				</p>
+				<h2>
+					<a name="_Toc_210">2.1 Adding a Node</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						The following procedure describes how to add a Node.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen right click on the <strong>DataCenter</strong> (c.f. <a href="#_Toc_120">1.2 Interface Overview</a>)
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select <code class="code_style">Add Node</code> from the drop-down menu
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_003"><i>Add Node</i></a></br>
+						<img src="resources/help/user_guide/images/main_menu.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						Complete the relevant information in the pop-up window that appears
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_004"><i>Add Node Details</i></a></br>
+						<img src="resources/help/user_guide/images/add_node.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">4 </strong>
+						Select ok
+					</p>
+					<p>
+						The Node has been added.
+					</p>
+				</div>
+				</br>
+				<h2>
+					<a name="_Toc_220">2.2 Deleting a node</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						The following procedure describes how to delete a Node.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel, right click on the Node's name you want to remove.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select <code class="code_style">Delete Node</code>
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_005"><i>Delete Node</i></a></br>
+						<img src="resources/help/user_guide/images/delete_node.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						Click on <code class="code_style">OK</code> to confirm the action.
+					</p>
+					<p>The Node is deleted.</p>
+					<p class="note">
+						<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+						This action removes the Node from OpenKVI, however all its Virtual Machines are still defined on the Node itself; and they can be re-imported later without any impact on the VMs themself.
+					</p>
+				</div>
+				</br>
+				<h2>
+					<a name="_Toc_230">2.3 Accessing Node Information</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						The following procedure describes how to access detailed node information.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						On the right panel, the <code class="code_style">Overview</code> tab display the Node information, such as hardware layout and or ressources usage.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_006"><i>Node Overview</i></a></br>
+						<img src="resources/help/user_guide/images/node_overview.png" style="max-width: 600px;"/>
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						Select the <code class="code_style">Virtual Machines</code> tab to display details relating to the virtual machines associated with the node.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_008"><i>Node VMs</i></a></br>
+						<img src="resources/help/user_guide/images/node_vms.png" style="max-height: 500px;"/>
+					</p>
+				</div>
+				<h2>
+					<a name="_Toc_240">2.4 Configuring a KVM node</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						The following procedures describes how to configure KVM nodes.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select the <code class="code_style">Configuration</code> tab in the right panel.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_007"><i>Node Configuration</i></a></br>
+						<img src="resources/help/user_guide/images/node_configuration_tab.png" style="max-width: 600px;"/>
+					</p>
+					</br>
+					<h3>
+						<a name="_Toc_241">2.4.1 Network Configuration</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+						The following procedure describes how to setup the node's low-level networks as well as Virtual Networks.</br>
+						Low-level networking configuration consist in setting OpenVswitch bridges and Bonding requirements on the KVM node, 
+						while Virtual Networks are abstractions used for Virtual Machines configuration and which purpose is to hide the underlying complexity. 
+						It can also used to provide an homogenous ground for Virtual Machines across multiple KVM nodes thus easing VM's migration.
+						</p>
+						<h4>
+							<a name="_Toc_2411">2.4.1.1 Node Networking</a>
+						</h4>
+						<div style="margin-left: 25px">
+							<p>
+							<em>A node's networks</em> must be configured directly on the KVM host, either on the serer's console screen 
+							or through a SSH connection (&#9888; be carefull when configuring the network over a SSH connection, 
+							a wrong doing may cut your access).</br>
+							The configuration is done with <strong>ncxctl</strong> command line tool.</br>
+								<p class="note">
+									<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+									Use <code>ncxctl net.<i>a.key</i> --info</code> to display information about net.<i>a.key</i> and how to use it.
+								</p>
+							<p>
+								<img src="resources/help/user_guide/images/image001.png"/>
+								<strong class="num">How</strong>
+							</p>
+							<p>
+								<strong class="num">1 </strong>
+								Create <b>Open vSwitch</b> bridges.
+							</p>
+							<p>
+							KVM nodes' external access is handled by Open vSwitch stack, so the first step is to create those underplaying vswitches.</br>
+							The recommendation is to create one vswitch per external access.</br>
+							Use <code>ncxctl net.bridges</code> command for this task.</br>
+							</p>
+							<p>
+							<i>Eg. Creating ovsbr0, ovsbr1 and ovsbr2 bridges:</i></br>
+								<div style="margin-left: 15px" class="code_style">
+									<code>
+									# ncxctl net.bridges --set ovsbr0 ovsbr1 ovsbr2</br>
+									</code>
+								</div>
+							</p>
+								<p class="note">
+									<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+									You can also use <code>--add and --remove</code> switches to add and remove Open vSwitch bridges.
+								</p>
+							<p>
+								<strong class="num">2 </strong>
+								<b>External access: Physical interface.</b>
+							</p>
+							<p>
+							Once OVS bridges are created you need to set their access interface.</br>
+							This can be either a physical device like “eth0”or a bond.</br>
+							</p>
+							<p>
+							<i>Eg. Set eth0 as access interface to ovsbr0</i></br>
+								<div style="margin-left: 15px" class="code_style">
+									<code>
+										# ncxctl net.conf.bridges.ovsbr0.access --set eth0</br>
+									</code>
+								</div>
+							</p>
+							<p>
+							<p>
+								<strong class="num">3 </strong>
+								<b>External access: Bonded interfaces.</b>
+							</p>
+							To set a bond as an access interface you need to create it with ncxctl net.bonds command.</br>
+							</p>
+							<p>
+							<i>Eg. Bond eth2 and eth3 into bond2 interface:</i>
+								<div style="margin-left: 15px" class="code_style">
+									<code>
+										# ncxctl net.bonds --set bond2:eth2,eth3</br>
+									</code>
+								</div>
+							</p>
+							<p>
+							Then you can use this bond as an access interface.</br>
+							</p>
+							<p>
+							<i>Eg. Attach bond2 to ovsbr2:</i>
+								<div style="margin-left: 15px" class="code_style">
+									<code>
+										# ncxctl net.conf.bridges.ovsbr2.access --set bond2</br>
+									</code>
+								</div>
+							</p>
+								
+							<p>
+								The  following  modes  of  bonding  will work with any kind of upstream
+								switch.  On the upstream switch, do not configure the interfaces  as  a bond:
+								<ul>
+									<li><u>active-backup</u></br>
+									Assigns  all flows to one slave, failing over to a backup
+									slave when the active slave is  disabled.   This  is  the
+									only bonding mode in which interfaces may be plugged into
+									different upstream switches.
+									</br>
+									</li>
+									<li><u>balance-slb</u></br>
+									Balances  flows  among slaves based on source MAC address
+									and output VLAN, with  periodic  rebalancing  as  traffic
+									patterns change.
+									</br>
+									</li>
+								</ul>
+									The following mode requires the upstream switch to support 
+									802.3ad with successful LACP negotiation and must be used 
+									in conjunction of the <code>--lacp</code> switch.</br>
+									If LACP negotiation fails, then active-backup mode is used.
+								<ul>
+									<li><u>balance-tcp</u></br>
+									Balances flows among slaves based on L2, L3, and L4 protocol information such as destination 
+									MAC address, IP address, and TCP port.
+									</li>
+								</ul>
+							</p>
+							<p>
+								<strong class="num">4 </strong>
+								<b>Set Management IP addresses:</b>
+							</p>
+							<p>
+							To set a management IP on a bridge use ncxctl net.conf.bridges.<i>[br_name]</i>.mgnt.ip command.</br>
+							This will create the <i>[br_name]</i>-mgnt interface on the system.</br>
+							</p>
+							<i>Eg. Set an IP address on ovsbr0:</i>
+								<div style="margin-left: 15px" class="code_style">
+									<code>
+										# ncxctl net.conf.bridges.ovsbr2.mgnt.ip --set 192.168.0.1/24</br>
+									</code>
+								</div>
+							</p>
+								<p class="note">
+									<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+									It's also possible to set a VLAN id for this interface with ncxct net.conf.bridges.<i>[br_name]</i>.mgnt.vlan command.
+								</p>
+							<p>
+								<strong class="num">5 </strong>
+								<b>Restart the network.</b>
+							</p>
+							<p>
+							Once all modifications have been done it is mandatory to restart the network.</br>
+							However, due to the multiple network layers involved in virtual networks, it's not possible to simply use the system command (service network restart).</br>
+							So to restart a KVM networking stack, use the following command:</br>
+								<div style="margin-left: 15px" class="code_style">
+									<code>
+										# ncxctl services..networks --restart</br>
+									</code>
+								</div>
+							</p>
+						</div>
+						<h4>
+							<a name="_Toc_2412">2.4.1.2 Virtual Networks</a>
+						</h4>
+						<div style="margin-left: 25px">
+							<p>
+							The following procedure describes how to setup Virtual Networks.</br>
+							Virtual Networks are abstractions based either on <strong>OpenVswitch (OVS)</strong> bridges or <strong>SR-IOV</strong> devices.</br>
+							A third type exist, <strong>Private Network</strong>, which is a special OVS bridge without any external connection, 
+							but unlike both previous type, a <em>Private Network</em> does not need to be based on an existing device. 
+							Actually the underlying OVS bridge will be automatically created by OpenKVI and likewise destroyed once the <em>Private Network</em> is removed.
+							</p>
+							<p class="note">
+								<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+								You can add <strong>VLAN tagging</strong> capabilities to your Virtual Networks, relieving the VMs the burden of tagging network packets and allowing for more flexibility.</br>
+								<em>Check Section <strong class="num"><small>5</small></strong> of the following procedure.</em>
+							</p>
+							<p>
+								<img src="resources/help/user_guide/images/image001.png"/>
+								<strong class="num">How</strong>
+							</p>
+							<p>
+								<strong class="num">1 </strong>
+								In the configuration tab select <code class="code_style">Networking</code>.
+							</p>
+							<p>
+								<a style="color: Teal;" name="_Toc_IMG_Node_Network_Configuration"><i>Networking Configuration</i></a></br>
+								<img src="resources/help/user_guide/images/node_configuragation_networking.png" style="max-width: 600px;"/>
+							</p>
+							<p>
+								<strong class="num">2 </strong>
+								Select the <code class="code_style">Virtual Networks</code> tab.
+							</p>
+							<p>
+								<strong class="num">3 </strong>
+								To add a new <em>Virtual Network</em>, click on <code class="code_style">New</code> at the bottom of the right panel.
+							</p>
+							<p>
+								<strong class="num">4 </strong>
+								In the pop-up window, in the <strong>General Settings</strong> section, set the Virtual Network's name (no blank allowed).</br>
+							</p>
+							<p>
+								Select the <code>Connection Type</code> which can be either <em>OpenVswitch</em>, <em>SR-IOV passthtrough</em> (if available) or <em>Private Network</em>. 
+								Then, depending on the connection type, you will have to choose an existing OVS bridge or a SR-IOV device.
+							</p>
+							<p>
+								<a style="color: Teal;" name="_Toc_IMG_Node_Network_Add"><i>Add a Virtual Network</i></a></br>
+								<img src="resources/help/user_guide/images/node_network_add.png" style="max-width: 600px;"/>
+							</p>
+							</br>
+							<p>
+								<strong class="num">5 </strong>
+								In the <strong>Portgroups</strong> section you can add one or more portgroups.</br>
+								Portgroups provide support for multiple VLAN tagging at the Virtual Network level. 
+								Each Portgroup can handle at most one VLAN tag, but one Virtual Network can handle many portgroups.
+							</p>
+							<p>
+								To add a portgroup with VLAN tagging, click on the <img class="code_style" src="resources/help/user_guide/images/plus_btn.png" title="Add a new Portgroup" /> button at the bottom of the Portgroup list.</br>
+								Set it's name, then toggle the <code>Use VLAN tagging</code> checkbox and in the <code>Tag ID</code> editor enter a number between 1 and 4094.
+								
+							</p>
+						</div>
+						<h4>
+							<a name="_Toc_2413">2.4.1.3 Virtual NIC migration</a>
+						</h4>
+						<div style="margin-left: 25px">
+							<p>
+							It’s possible to migrate a Virtual Machine’s Virtual NIC directly from the <code class="code_style">Virtual Networks</code> configuration panel.</br>
+							</p>
+							<p>
+								<img src="resources/help/user_guide/images/image001.png"/>
+								<strong class="num">How</strong>
+							</p>
+							<p>
+								<strong class="num">1 </strong>
+								Just Drag and Drop Virtual Interfaces between Portgroups. 
+								It’s also possible to migrate a Virtual Interface between two portgroups of different Virtual Networks.
+							</p>
+							<p>
+								<a style="color: Teal;" name="_Toc_IMG_Node_vnic_migration"><i>Virtual NIC migration</i></a></br>
+								<img src="resources/help/user_guide/images/node_network_move_vnet.png"/>
+							</p>
+							<p class="note">
+								<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+								The Live migration of a Virtual Interface is only possible with Virtual Networks based on OpenVswitch.
+							</p>
+							
+						</div>
+					</div>
+					</br>
+					<h3>
+						<a name="_Toc_242">2.4.2 Time Settings</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+							The following procedure describes how to setup the node's Clock and Timezone, as well as how to synchronize it with an NTP server.
+						</p>
+						<p>
+							<img src="resources/help/user_guide/images/image001.png"/>
+							<strong class="num">How</strong>
+						</p>
+						<p>
+							<strong class="num">1 </strong>
+							In the configuration tab select <code class="code_style">Time Configuration</code>.
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_Node_Time_Configuration"><i>Node Time Configuration</i></a></br>
+							<img src="resources/help/user_guide/images/node_time_configuration_tab.png" style="max-width: 600px;"/>
+						</p>
+						<p>
+							<strong class="num">2 </strong>
+							Add the needed Network Time Protocol server(s) in the "NTP Servers:" section.
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_NTP_Servers"><i>Network Time Protocol server list</i></a></br>
+							<img src="resources/help/user_guide/images/node_ntp_servers.png" style="max-width: 600px;"/>
+						</p>
+						<p>
+							<strong class="num">3 </strong>
+							Then click the "Tools" button <img src="resources/help/user_guide/images/node_time_config_btn.png"/> in the top-right corner (c.f. section 1).
+						</p>
+						<p>
+							<strong class="num">4 </strong>
+							In the "Date and Time configuration" pop-up window you will be able to set four different parameters:
+							<ul>
+								<li>Change the <u>Date</u> in the top-left corner.</li>
+								<li>Modify the <u>Clock</u> in the top-right corner.</li>
+								<li>Set the <u>Timezone</u> in the bottom-right corner.</li>
+								<li>Activate the <u>NTP service</u> in the bottom-left corner.<br>
+								In the "Primary server" drop down menu you have to chose one of the servers you added in section 
+								<small><strong class="num">2</strong></small>.
+								</li>
+							</ul>
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_Data_Time_config"><i>Date and Time configuration window</i></a></br>
+							<img src="resources/help/user_guide/images/node_time_clock_configuration.png" style="max-width: 600px;"/>
+						</p>
+						
+					</div>
+					</br>
+					<h3>
+						<a name="_Toc_243">2.4.3 Hardware Events</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+							The following procedure describes how to setup the node's Hardware Agent to send events to a remote SNMP server.
+						</p>
+						<p>
+							<img src="resources/help/user_guide/images/image001.png"/>
+							<strong class="num">How</strong>
+						</p>
+						<p>
+							<strong class="num">1 </strong>
+							In the configuration tab, select <code class="code_style">Hardware events</code>.
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_Node_Hardware_Traps"><i>Hardware events configuration</i></a></br>
+							<img src="resources/help/user_guide/images/node_hardware_events_configuration.png" style="max-width: 600px;"/>
+						</p>
+						<p>
+							<strong class="num">2 </strong>
+							Configure the <code class="code_style">SNMP service</code>, click on the configuration button 
+							<img src="resources/help/user_guide/images/node_time_config_btn.png"/> in front of the title, then in the pop-up window:
+							<ul>
+								<li>check <code>Autostart service at boot</code>.</li>
+								<li>check <code>Run process now</code>.</li>
+								<li>enter remote SNMP server's IP address.</li>
+								<li>and finally, click on <code>Apply</code>.</li>
+							</ul>
+						</p>
+						<p>
+						<a style="color: Teal;" name="_Toc_IMG_node_hardware_events_snmp"><i>SNMP service configuration</i></a></br>
+							<img src="resources/help/user_guide/images/node_hardware_events_snmp.png" style="max-width: 600px;"/>
+						</p>
+						<p>
+							<strong class="num">3 </strong>
+							Configure the <code class="code_style">Hardware agent</code>, click on the configuration button 
+							<img src="resources/help/user_guide/images/node_time_config_btn.png"/> in front of the title, then in the pop-up window:
+							<ul>
+								<li>check <code>Autostart service at boot</code>.</li>
+								<li>check <code>Load agent now</code>.</li>
+								<li>and finally, click on <code>Apply</code>.</li>
+							</ul>
+						</p>
+						<p>
+						<a style="color: Teal;" name="_Toc_IMG_node_hardware_events_hardware_agent"><i>Hardware agent configuration</i></a></br>
+							<img src="resources/help/user_guide/images/node_hardware_events_hardware_agent.png" style="max-width: 600px;"/>
+						</p>
+						<p>
+							<strong class="num">4 </strong>
+							All services must now be configured and running properly.
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_node_hardware_events_running"><i>Hardware events services are running correctly</i></a></br>
+							<img src="resources/help/user_guide/images/node_hardware_events_running.png" style="max-width: 600px;"/>
+						</p>
+						
+					</div>
+					</br>
+				</div>
+				<h2>
+					<a name="_Toc_250">2.5 SSH Console</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						Users of the <strong>Administrator</strong> group can have a direct SSH access to KVM nodes through the web-application.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select the <code class="code_style">Console</code> tab in the right panel.
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						You can now login with the appropriate SSH credentials.
+					</p>
+					</br>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_SSH_Console"><i>SSH Webshell</i></a></br>
+						<img src="resources/help/user_guide/images/node_ssh_console.png" style="max-width: 600px;"/>
+					</p>
+					
+				</div>
+				<h2>
+					<a name="_Toc_260">2.6 Performance monitoring</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						Display the node ressources usage over time.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select the <code class="code_style">Performances</code> tab in the right panel.
+					</p>
+					</br>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_node_perfomances"><i>Node performance graphs</i></a></br>
+						<img src="resources/help/user_guide/images/node_performances_tab.png" style="max-width: 600px;"/>
+					</p>
+					
+				</div>
+				<h2>
+					<a name="_Toc_270">2.7 System logs</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						Display the node's system logs.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select the <code class="code_style">Logs</code> tab in the right panel.
+					</p>
+					</br>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_node_logs"><i>Logs tab</i></a></br>
+						<img src="resources/help/user_guide/images/node_hardware_events_logs.png" style="max-width: 600px;"/>
+					</p>
+					<p class="note">
+						<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+						<code>Hardware events</code> (c.f. <a href="#_Toc_243">Hardware traps</a>) must have been properly configured to display the associated logs.</br>
+					</p>
+					
+				</div>
+			</div>
+		</div>
+		<div>
+		</br>
+		</br>
+		<h1>
+			<a name="_Toc_300">3. Virtual Machine Management</a>
+		</h1>
+			<div style="margin-left: 25px">
+				<p>
+					This section outlines tasks related to Virtual Machine Management.
+				</p>
+				<h2>
+					<a name="_Toc_310">3.1 Adding a Virtual Machine</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						The following procedure describes how to add a Virtual machine to a node.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select <code class="code_style">New Virtual machine</code> from the drop-down menu
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_009"><i>Add Virtual Machine</i></a></br>
+						<img src="resources/help/user_guide/images/node_menu.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						Complete the information in the pop-up window
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_010"><i>Add Virtual Machine Information</i></a></br>
+						<img src="resources/help/user_guide/images/add_vm.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">4 </strong>
+						Select OK
+					</p>
+					<p>
+						The Virtual machine has been added.
+					</p>
+				</div>
+				</br>
+				<h2>
+					<a name="_Toc_320">3.2 Other Virtual Machine Tasks</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						This procedure describes other VM tasks.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+						<br/>
+						A list of all virtual Machines associated to that node is displayed.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_011"><i>VM List</i></a></br>
+						<img src="resources/help/user_guide/images/left_panel_vm_list.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Right click on a VM name
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_012"><i>VM Options</i></a></br>
+						<img src="resources/help/user_guide/images/vm_menu.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						Select from the drop-down list which task you wish to perform for the selected VM
+					</p>
+				</div>
+				</br>
+				<h2>
+					<a name="_Toc_330">3.3 Accessing Virtual Machine Information</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						The following procedure describes how to access Virtual Machine information?
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+						<br/>
+						A list of all virtual Machines associated to that node is displayed.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select the required Virtual Machine. On the right hand side of the screen there are five tabs
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						Select the <code class="code_style">Overview</code> tab to display VM settings OS and Network information
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_013"><i>VM Overview</i></a></br>
+						<img src="resources/help/user_guide/images/vm_overview.png" style="max-width: 600px;"/>
+					</p>
+					<p>
+						<strong class="num">4 </strong>
+						Select the <code class="code_style">Screen</code> tab to access the VM CLI screen
+						<br/>
+						<br/>
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_014"><i>VM Screen</i></a></br>
+						<img src="resources/help/user_guide/images/vm_screen.png" style="max-width: 600px;"/>
+					</p>
+					<p>
+						<strong class="num">5 </strong>
+						Select the <code class="code_style">Configuration</code> tab to access the VMs configuration
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_015"><i>VM Configuration</i></a></br>
+						<img src="resources/help/user_guide/images/vm_configuration_tab.png" style="max-width: 600px;"/>
+					</p>
+					<p class="note">
+						<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+						Settings can be modified only when the VM is not running
+					</p>
+					<p>
+						<strong class="num">6 </strong>
+						Select the <code class="code_style">Snapshots</code> tab to access the snapshot management screen
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_016"><i>VM Snapshots</i></a></br>
+						<img src="resources/help/user_guide/images/vm_snapshot_tab.png" style="max-width: 600px;"/>
+					</p>
+					<p>
+						<strong class="num">7 </strong>
+						Select the <code class="code_style">Performance</code> tab to display CPU, Memory and Network traffic usage
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_017"><i>VM Performance</i></a></br>
+						<img src="resources/help/user_guide/images/vm_performances_tab.png" style="max-width: 600px;"/>
+					</p>
+				</div>
+				</br>
+				<h2>
+					<a name="_Toc_340">3.4 Using the Virtual Machine Screen</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						The following procedure describes how to access and use the Virtual machines screen.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+						</br>
+						A list of all virtual Machines associated to that node is displayed.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select the required Virtual Machine
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						Select the <code class="code_style">Screen</code> tab for the VM on the right hand side.</br>
+						The VM screen opens
+					</p>
+					<p>
+						<strong class="num">4 </strong>
+						To open the screen in a new window click on the <code class="code_style">Detach</code> button (c.f. <i>Detach Screen</i> figure)
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_018"><i>Detatch Screen</i></a></br>
+						<img src="resources/help/user_guide/images/vm_detach_screen.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">5 </strong>
+						To toggle on the <strong>Alt</strong> key, just press down the <code class="code_style">Alt Off</code> button, 
+						and release it to toggle the <strong>Alt</strong> key back to off.
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_019"><i>Screen Icons</i></a></br>
+						<img src="resources/help/user_guide/images/vm_screen_buttons.png" style="max-width: 600px;"/>
+					</p>
+				</div>
+				</br>
+				<h2>
+					<a name="_Toc_350">3.5 Snapshot Management</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						This section describes snapshot management.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						On the main screen, in the left panel (c.f. <a href="#_Toc_120">Interface Overview</a>) select the wished node.
+						<br/>
+						A list of all virtual Machines associated to that node is displayed.
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Select the required Virtual Machine
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						On the right hand side of the screen select the <code class="code_style">Snapshots</code> tab
+					</p>
+					<p>
+						<strong class="num">4 </strong>
+						Snapshots management can either be done with the buttons bar or with a snapshot's contextual menu (c.f. Figure below)
+					</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_snapshot_menu"><i>Snapshot Management</i></a></br>
+							<img src="resources/help/user_guide/images/vm_snapshot_menu.png" style="max-height: 500px;"/>
+						</p>
+					<h3>
+						<a name="_Toc_351">3.5.1 Taking a Snapshot</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+							The following procedure describes how to take a snapshot of a virtual machine.
+						</p>
+						<p>
+							<img src="resources/help/user_guide/images/image001.png"/>
+							<strong class="num">How</strong>
+						</p>
+						<p>
+							<strong class="num">1 </strong>
+							Click on the <code class="code_style">Create new Snapshot</code> button
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_create_snapshot"><i>Create Snapshot</i></a></br>
+							<img src="resources/help/user_guide/images/vm_snapshot_create.png" style="max-height: 500px;"/>
+						</p>
+						<p>
+							A snapshot of the VM is saved.
+						</p>
+					</br>
+					<h3>
+						<a name="_Toc_352">3.5.2 Rollbacking a Snapshot</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+						When rollbacking a snapshot, the Virtual Machine is reseted to the state it was before the snapshot.</br>
+						The snapshot is then deleted and all modifications done within the snapshot are lost.
+						</p>
+						<p>
+							<img src="resources/help/user_guide/images/image001.png"/>
+							<strong class="num">How</strong>
+						</p>
+						<p>
+							<strong class="num">1 </strong>
+							Select the required snapshot from the list
+						</p>
+						<p>
+							<strong class="num">2 </strong>
+							Click on the <code class="code_style">Rollback snapshot</code> button (c.f. Figure below)
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_rollback_snapshot"><i>Rollback Snapshot</i></a></br>
+							<img src="resources/help/user_guide/images/vm_snapshot_rollback.png" style="max-height: 500px;"/>
+						</p>
+					</div>
+					</br>
+					<h3>
+						<a name="_Toc_353">3.5.3 Saving a Snapshot</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+						Saving a snapshot means that all modifications done in this snapshot will be merged with its parent, or in the main image if it doesn't have a parent snapshot,
+						then the snapshot is discarded.<br>
+						Thus at the end of the procedure any modification is saved and the snapshot removed.
+						</p>
+						<p>
+							<img src="resources/help/user_guide/images/image001.png"/>
+							<strong class="num">How</strong>
+						</p>
+						<p>
+							<strong class="num">1 </strong>
+							Select the required snapshot from the list
+						</p>
+						<p>
+							<strong class="num">2 </strong>
+							Click on the <code class="code_style">Merge snapshot with parent</code> button (c.f. Figure below)
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_merge_snapshot"><i>Merge snapshot with parent</i></a></br>
+							<img src="resources/help/user_guide/images/vm_snapshot_merge.png" style="max-height: 500px;"/>
+						</p>
+					</div>
+					</br>
+					<h3>
+						<a name="_Toc_354">3.5.4 Advanced Snapshot usages</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+						A more advanced usage of snapshots is also possible.
+						</p>
+						<p>
+							<img src="resources/help/user_guide/images/image001.png"/>
+							<strong class="num">How</strong>
+						</p>
+						<p>
+							<strong class="num">1 </strong>
+							<strong>Reset a snapshot</strong>:</br>
+							The Virtual Machine is reseted to the initial state it was in when creating the snapshot.</br>
+							This give the possibility to erase any unwanted modifications but keeps the snapshot for further trials.
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_snapshot_reset"><i>Reset Snapshot</i></a></br>
+							<img src="resources/help/user_guide/images/vm_snapshot_reset.png" style="max-height: 500px;"/>
+						</p>
+						<p>
+							<strong class="num">2 </strong>
+							<strong>Go to a snapshot</strong>:</br>
+							When using multiple snapshots it is possible to move from one snapshot to another.</br>
+							In the process, the Virtual Machine's data is restored to the initial state of the targeted snapshot.
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_snapshot_goto"><i>Go to snapshot</i></a></br>
+							<img src="resources/help/user_guide/images/vm_snapshot_goto.png" style="max-height: 500px;"/>
+						</p>
+						<p>
+							<strong class="num">3 </strong>
+							<strong>Discard a snapshot</strong>:</br>
+							When using multiple snapshots it is possible to discard an used snapshot.</br>
+							If the snapshot has a child, then its state will be merged with its child. Otherwise any modification it might contains will be lost.
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_snapshot_discard"><i>Discard snapshot</i></a></br>
+							<img src="resources/help/user_guide/images/vm_snapshot_discard.png" style="max-height: 500px;"/>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+		</br>
+		</br>
+		<h1>
+			<a name="_Toc_400">4. Global Configuration</a>
+		</h1>
+			<div style="margin-left: 25px">
+				<p>
+					This section describes system wide configurations.
+				</p>
+				<p>
+					<img src="resources/help/user_guide/images/image001.png"/>
+					<strong class="num">How</strong>
+				</p>
+				<p>
+					<strong class="num">1 </strong>
+					On the main screen, in the left panel click on the <strong>DataCenter</strong> (c.f. <a href="#_Toc_120">Interface Overview</a>).
+				</p>
+				<p>
+					<strong class="num">2 </strong>
+					On the right ahnd side of the screen select the <code class="code_style">Configuration</code> tab
+				</p>
+				<p>
+				<a style="color: Teal;" name="_Toc_IMG_022"><i>DataCenter Configuration</i></a></br>
+					<img src="resources/help/user_guide/images/users_management.png" style="max-height: 500px;"/>
+				</p>
+				</br>
+				<h2>
+					<a name="_Toc_410">4.1 Roles</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+					Three roles define the level of permission granted to a user.</br>
+					Those roles are:
+					<ul>
+						<li><u>Adminstrator</u>: has full control over OpenKVI.</li>
+						<li><u>PowerUser</u>: has only a full control over Virtual Machines (Create/Destroy/Configure).</li>
+						<li><u>User</u>: has a very limited control over Virtual Machines.</li>
+					</ul>
+					The role is assigned at user creation (c.f. <a href="#_Toc_420">4.2 User Management</a>) 
+					and can be modified by the administrator.
+					</p>
+				</br>
+				</div>
+				<h2>
+					<a name="_Toc_420">4.2 User Management</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+						This procedure describes how to create a new user.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						Select <code class="code_style">Users</code> in the left panel.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_DC_select_users"><i>Users</i></a></br>
+						<img src="resources/help/user_guide/images/DataCenter_configuration_users.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Click on <code class="code_style">New</code>
+					</p>
+					<p>
+						<strong class="num">3 </strong>
+						Enter the required information for the new user.</br>
+						Only the <strong>Login</strong>, <strong>Password</strong> and <strong>User Role</strong> (c.f. <a href="#_Toc_410">4.2 Roles</a>) fields are mandatory.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_023"><i>New User</i></a></br>
+						<img src="resources/help/user_guide/images/add_user.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">4 </strong>
+						Select <code class="code_style">Save</code>
+					</p>
+					<p>
+						The new user is ready
+					</p>
+				</div>
+				<h2>
+					<a name="_Toc_430">4.3 Authentication Modes</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+					This procedure describes how to change OpenKVI authentication mode.</br>
+					There is a choice between three different methodes, the default <strong>Local SQL database</strong>, 
+					against a <strong>Remote LDAP server</strong> or an <strong>Active Directory server</strong>.
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						Select <code class="code_style">Authentication</code> in the left panel.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_DC_select_auth"><i>Authentication Settings</i></a></br>
+						<img src="resources/help/user_guide/images/DataCenter_configuration_auth.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						In the dropdown <em>Methode</em> field select the wished mode.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_Authentication_Modes"><i>Authentication Modes</i></a></br>
+						<img src="resources/help/user_guide/images/DataCenter_Auth_menu.png" style="max-height: 500px;"/>
+					</p>
+					<h3>
+						<a name="_Toc_431">4.3.1 Local SQL database</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+						This is the default authentication mode.</br>
+						User's login and encrypted password are stored in a local database.</br>
+						Each user must be manually added by the administrator (c.f. <a href="#_Toc_420">4.2 User Management</a>).
+						</p>
+					</div>
+					<h3>
+						<a name="_Toc_432">4.3.2 LDAP Authentication</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+						In this mode, users's credential is checked against a remote LDAP server.</br>
+						There is no needs for a LDAP Admin account as the LDAP connection is done with the user own credentials.
+						</p>
+						<p>
+							<img src="resources/help/user_guide/images/image001.png"/>
+							<strong class="num">How</strong>
+						</p>
+						<p>
+							<strong class="num">1 </strong>
+							When selecting <strong>Remote LDAP server</strong> authentication, 
+							a new panel appears requiring at least five parameters to be filled:
+							<ol>
+								<li class="a"><u>Host:</u> the LDAP server IP address</li>
+								<li class="a"><u>Port:</u> the LDAP port (default is 389)</li>
+								<li class="a"><u>Base DN:</u> directory entry name</li>
+								<li class="a"><u>Default Role:</u> default role assigned to new users (c.f <a href="#_Toc_410">4.1 Roles</a>)</li>
+								<li class="a"><u>Login:</u> directory attribute holding the user's credentials</li>
+							</ol>
+							<strong>First name</strong>, <strong>Last name</strong> and <strong>Mail</strong> are optionals directory attributes that extend the user account information.
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_LDAP_Parameters"><i>LDAP Parameters</i></a></br>
+							<img src="resources/help/user_guide/images/DataCenter_Auth_LDAP.png" style="max-height: 500px;"/>
+						</p>
+						<p>
+							<strong class="num">2 </strong>
+							Check <code class="code_style">On-the-fly user creation</code> if you whish to automatically add new users to OpenKVI's database.</br>
+							If unchecked, the administrator will have to add each user before they can log in.
+						</p>
+						<p>
+							<strong class="num">3 </strong>
+							Press <code class="code_style">Test LDAP connection</code> to check that all parameters are correctly set.</br>
+							A popup window will ask for a test user login/password, then you can proceed with the test.</br>
+						</p>
+						<p>
+							<strong class="num">4 </strong>
+							If the above test is successful, then click on <code class="code_style">Save</code> to validate the configuration.
+						</p>
+						<p>
+						OpenKVI is now configured to authenticate user against a remote LDAP service.
+						</p>
+					</div>
+					<h3>
+						<a name="_Toc_433">4.3.3 Active Directory Authentication</a>
+					</h3>
+					<div style="margin-left: 25px">
+						<p>
+						The Active Directory procedure is exactly the same as for a LDAP authentication setup (c.f. <a href="#_Toc_432">4.3.2 LDAP Authentication</a>), 
+						but with an additional mandatory parameter: the <strong>Domain</strong> name.
+						</p>
+						<p>
+							<a style="color: Teal;" name="_Toc_IMG_AD_Parameters"><i>Active Directory Parameters</i></a></br>
+							<img src="resources/help/user_guide/images/DataCenter_Auth_AD.png" style="max-height: 500px;"/>
+						</p>
+					</div>
+				</div>
+				<h2>
+					<a name="_Toc_440">4.4 Security Level</a>
+				</h2>
+				<div style="margin-left: 25px">
+					<p>
+					Two Security Levels are available:
+					<ol>
+						<li class="a">The <strong>Low</strong> level allows unencrypted communications and there is no firewalling.</br>
+						<i>This level should be mostly used for test purposes.</i></li>
+						<li class="a">The <strong>High</strong> level force encrypted communications, the firewall is active on OpenKVI
+						as well as on every nodes' management IP.</br>
+						<i>This level is suitable for a production environment.</i></li>
+					</ol>
+					</p>
+					<p>
+						<img src="resources/help/user_guide/images/image001.png"/>
+						<strong class="num">How</strong>
+					</p>
+					<p>
+						<strong class="num">1 </strong>
+						Select <code class="code_style">Security</code> in the left panel.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_DC_select_security"><i>Security Settings</i></a></br>
+						<img src="resources/help/user_guide/images/DataCenter_configuration_security.png" style="max-height: 500px;"/>
+					</p>
+					<p>
+						<strong class="num">2 </strong>
+						Slide the cursor on the wanted level.
+					</p>
+					<p>
+						<a style="color: Teal;" name="_Toc_IMG_DC_change_security"><i>Change Security Level</i></a></br>
+						<img src="resources/help/user_guide/images/DataCenter_security.png" style="max-height: 500px;"/>
+					</p>
+					<p class="note">
+						<img src="resources/help/user_guide/images/image002.png" alt="Gray20_Note75"/>
+						By default OpenKVI comes with its Security Level set to <u>Low</u>.</br>
+						Only a member of the <em>Administrator</em> group can change the security level.
+					</p>
+				</div>
+			</div>
+		</div>
+		</br>
+		<hr>
+		<p class="section">List of Figures</p>
+		<div style="margin-left: 25px">
+<!-- LIST OF FIGURE START -->
+<a style="color: Teal;" href="#_Toc_IMG_001"><i>Login Screen</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_002"><i>OpenKVI Main Screen</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_003"><i>Add Node</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_004"><i>Add Node Details</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_005"><i>Delete Node</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_006"><i>Node Overview</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_008"><i>Node VMs</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_007"><i>Node Configuration</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_Node_Network_Configuration"><i>Networking Configuration</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_Node_Network_Add"><i>Add a Virtual Network</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_Node_vnic_migration"><i>Virtual NIC migration</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_Node_Time_Configuration"><i>Node Time Configuration</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_NTP_Servers"><i>Network Time Protocol server list</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_Data_Time_config"><i>Date and Time configuration window</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_Node_Hardware_Traps"><i>Hardware events configuration</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_node_hardware_events_snmp"><i>SNMP service configuration</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_node_hardware_events_hardware_agent"><i>Hardware agent configuration</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_node_hardware_events_running"><i>Hardware events services are running correctly</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_SSH_Console"><i>SSH Webshell</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_node_perfomances"><i>Node performance graphs</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_node_logs"><i>Logs tab</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_009"><i>Add Virtual Machine</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_010"><i>Add Virtual Machine Information</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_011"><i>VM List</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_012"><i>VM Options</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_013"><i>VM Overview</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_014"><i>VM Screen</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_015"><i>VM Configuration</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_016"><i>VM Snapshots</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_017"><i>VM Performance</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_018"><i>Detatch Screen</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_019"><i>Screen Icons</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_snapshot_menu"><i>Snapshot Management</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_create_snapshot"><i>Create Snapshot</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_rollback_snapshot"><i>Rollback Snapshot</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_merge_snapshot"><i>Merge snapshot with parent</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_snapshot_reset"><i>Reset Snapshot</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_snapshot_goto"><i>Go to snapshot</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_snapshot_discard"><i>Discard snapshot</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_022"><i>DataCenter Configuration</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_DC_select_users"><i>Users</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_023"><i>New User</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_DC_select_auth"><i>Authentication Settings</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_Authentication_Modes"><i>Authentication Modes</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_LDAP_Parameters"><i>LDAP Parameters</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_AD_Parameters"><i>Active Directory Parameters</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_DC_select_security"><i>Security Settings</i></a></br>
+<a style="color: Teal;" href="#_Toc_IMG_DC_change_security"><i>Change Security Level</i></a></br>
+<!-- LIST OF FIGURE END -->
+		</div>
+	</div>
+</body>
+</html>
+

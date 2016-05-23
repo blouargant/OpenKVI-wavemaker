@@ -1,0 +1,60 @@
+<h1>What's new in OpenKVI 1.4 ?</h1>
+<p>
+<h2><u>Security:</u></h2>
+<dl>
+<dt><b>Roles</b>:</dt>
+<dd>
+Three roles have been created to define the level of permission granted to a user.</br>
+Those roles are:<br>
+&#8728; <u>Adminstrator</u>: has full control over OpenKVI.</br>
+&#8728; <u>PowerUser</u>: has only a full control over Virtual Machines (Create/Destroy/Configure).</br>
+&#8728; <u>User</u>: has a very limited control over Virtual Machines.</br>
+</br>
+The roles are defined at user creation and can be modified by the administrator :</br>
+<i>OpenKVI &#8614; Configuration &#8614; Users</i>
+</dd>
+</br>
+<dt><b>Security Level</b>:</dt>
+<dd>
+Two Security Levels have been introduced.</br>
+&#8728; The <u>Low</u> level allows unencrypted communications and there is no firewalling.</br>
+	<i>This level should be mostly used for test purposes.</i></br>
+&#8728; The <u>High</u> level force encrypted communications, the firewall is active on OpenKVI as well as on each node's management IP.</br>
+	<i>This level is suitable for a production environment.</i></br>
+</br>
+The Security level is defined at <u>Low</u> by default and can be modified by the administrator :</br>
+<i>OpenKVI &#8614; Configuration &#8614; Security</i>
+</dd>
+</dl>
+
+<h2><u>Nodes:</u></h2>
+<dl>
+<dt><b>ShellinaBox</b>:</dt>
+<dd>
+ShellInABox has been integrated to OpenKVI.</br>
+This feature allows administrators to have SSH access to KVM nodes directly from OpenKVI web interface.</br>
+Available only with encrypted communications and members of the Administrator group, it can be accessed by selecting the desired node and click on the <u>Console</u> tab.</br>
+</dd>
+</br>
+<dt><b>System time setting</b>:</dt>
+<dd>
+Administrators has now the possibility to setup Node's system time via OpenKVI.</br>
+It is recommended to synchronize all KVM nodes to a stable NTP source.</br>
+<i>Select a KVM Node &#8614; Configuration &#8614; Time configuration</i>
+</dd>
+</dl>
+
+<h2><u>Interface:</u></h2>
+<dl>
+<dt><b>Compact view</b>:</dt>
+<dd>
+The Compact view mode removes all non-essential elements.</br>
+This maximize the space for important components, allowing for small screen users, such as laptops, to have a better user experience.</br>
+<i>Tool Bar &#8614; View &#8614; Switch to compact view</i>
+</dd>
+</br>
+</dl>
+</p>
+
+
+

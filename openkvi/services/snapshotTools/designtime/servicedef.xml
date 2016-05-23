@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<service xmlns="http://www.activegrid.com/namespaces/ServiceDefinitions/1.0" springFile="snapshotTools.spring.xml" type="JavaService" CRUDService="false" class="snapshotTools" id="snapshotTools">
+    <operation name="createSnapshot">
+        <parameter isList="false" typeRef="java.lang.String" name="vmName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="xml"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="revert">
+        <parameter isList="false" typeRef="java.lang.String" name="vmName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="snapshot"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="mergeToParent">
+        <parameter isList="false" typeRef="java.lang.String" name="vmName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="snapshot"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="rollback">
+        <parameter isList="false" typeRef="java.lang.String" name="vmName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="snapshot"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="getSnapshotList">
+        <parameter isList="false" typeRef="java.lang.String" name="vmName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="discardAll">
+        <parameter isList="false" typeRef="java.lang.String" name="vmName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="snapshot"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <operation name="mergeToChildren">
+        <parameter isList="false" typeRef="java.lang.String" name="vmName"/>
+        <parameter isList="false" typeRef="java.lang.String" name="server"/>
+        <parameter isList="false" typeRef="java.lang.String" name="snapshot"/>
+        <return isList="false" typeRef="java.lang.String"/>
+    </operation>
+    <dataobjects/>
+</service>
